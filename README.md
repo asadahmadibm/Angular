@@ -26,67 +26,58 @@ for Use Angular Project
 	    import { questioncomponent نام کامپوننت } from './question.component';
 	    add in  declarations
 # Best Component For Project
-npm i bootstrap --save اضافه کردن بوت استرپ
+	npm i bootstrap --save اضافه کردن بوت استرپ
+		add to style.css --> @import '~bootstrap/dist/css/bootstrap.min.css';
+		add to Angular.json  in styles --> "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+		example in html <button class="btn btn-success">تایید</button>
+		
+	ng add @angular/material اضافه نمودن متریال دیزاین
+		add to style.css --> @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+		add to app.module.ts --> import { MatButtonModule } from '@angular/material/button';  And in imports -->   MatButtonModule
+		example in html <button mat-raised-button color="primary">Primary</button>	
 
-add to style.css --> @import '~bootstrap/dist/css/bootstrap.min.css';
-add to Angular.json  in styles --> "./node_modules/bootstrap/dist/css/bootstrap.min.css"
-or
-"styles": [
-          "src/styles.css", "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-          "./node_modules/font-awesome/css/font-awesome.css"
-        ],
-        "scripts": [
-          "./node_modules/jquery/dist/jquery.min.js", "./node_modules/bootstrap/dist/js/bootstrap.min.js"
-        ]
-example in html <button class="btn btn-success">تایید</button>
-ng add @angular/material اضافه نمودن متریال دیزاین
+	npm i --save ag-grid-community ag-grid-angular نصب ای جی گرید
+		add to style.css --> @import 'ag-grid-community/dist/styles/ag-grid.css';  
+				     @import 'ag-grid-community/dist/styles/ag-theme-alpine.css'; 
+		add to app.module.ts --> import { AgGridModule } from 'ag-grid-angular';  And in imports --> AgGridModule
+		example 
+		in ts :
+			import { ColDef } from 'ag-grid-community';
+			export class AppComponent  {
+			    columnDefs: ColDef[] = [
+				{ field: 'make' },
+				{ field: 'model' },
+				{ field: 'price' }
+			    ];
+			    rowData = [
+				{ make: 'Toyota', model: 'Celica', price: 35000 },
+				{ make: 'Ford', model: 'Mondeo', price: 32000 },
+				{ make: 'Porsche', model: 'Boxster', price: 72000 }
+			    ];
+			}
+		in html :
+			<ag-grid-angular
+			    style="width: 500px; height: 350px;"
+			    class="ag-theme-alpine"
+			    [rowData]="rowData"
+			    [enableRtl]="true"
+			    [columnDefs]="columnDefs">
+			</ag-grid-angular>
 
-add to style.css --> @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-add to app.module.ts --> import { MatButtonModule } from '@angular/material/button';  And in imports -->   MatButtonModule
-example in html <button mat-raised-button color="primary">Primary</button>	
-npm i --save ag-grid-community ag-grid-angular نصب ای جی گرید
+	npm i ngx-toastr --save نصب toastr
+		add to Angular.json  in styles -->  "./node_modules/ngx-toastr/toastr.css"
+		add to app.module.ts --> import { ToastrModule } from 'ngx-toastr'; And in imports --> ToastrModule.forRoot()
+		example use 
+		import { ToastrService } from 'ngx-toastr';
 
-add to style.css --> @import 'ag-grid-community/dist/styles/ag-grid.css';  
-		     @import 'ag-grid-community/dist/styles/ag-theme-alpine.css'; 
-add to app.module.ts --> import { AgGridModule } from 'ag-grid-angular';  And in imports --> AgGridModule
-example 
-	in ts :
-		import { ColDef } from 'ag-grid-community';
-		export class AppComponent  {
-		    columnDefs: ColDef[] = [
-			{ field: 'make' },
-			{ field: 'model' },
-			{ field: 'price' }
-		    ];
-		    rowData = [
-			{ make: 'Toyota', model: 'Celica', price: 35000 },
-			{ make: 'Ford', model: 'Mondeo', price: 32000 },
-			{ make: 'Porsche', model: 'Boxster', price: 72000 }
-		    ];
+		@Component({...})
+		export class YourComponent {
+		  constructor(private toastr: ToastrService) {}
+
+		  showSuccess() {
+		    this.toastr.success('Hello world!', 'Toastr fun!');
+		  }
 		}
-	in html :
-		<ag-grid-angular
-		    style="width: 500px; height: 350px;"
-		    class="ag-theme-alpine"
-		    [rowData]="rowData"
-		    [enableRtl]="true"
-		    [columnDefs]="columnDefs">
-		</ag-grid-angular>
-npm i ngx-toastr --save نصب toastr
-
-add to Angular.json  in styles -->  "./node_modules/ngx-toastr/toastr.css"
-add to app.module.ts --> import { ToastrModule } from 'ngx-toastr'; And in imports --> ToastrModule.forRoot()
-example use 
-import { ToastrService } from 'ngx-toastr';
-
-@Component({...})
-export class YourComponent {
-  constructor(private toastr: ToastrService) {}
-
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
-}
 font Bnazanin :
 
 1- copy fonts in asset		 
