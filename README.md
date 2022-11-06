@@ -9,6 +9,7 @@
 		Angular Snippets
 	in terminal vscode
 	ng new frontend     // Make Project                 
+	 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 	ng serve -o         //Run Project
 	
 #  Common Command
