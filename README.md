@@ -1,6 +1,6 @@
 # Angular
 
-for Use Angular Project
+# for Use Angular Project
   
     Install node.js https://nodejs.org/en/download/
     npm install -g @angular/cli
