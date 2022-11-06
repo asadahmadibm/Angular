@@ -78,57 +78,57 @@ for Use Angular Project
 		    this.toastr.success('Hello world!', 'Toastr fun!');
 		  }
 		}
-font Bnazanin :
 
-1- copy fonts in asset		 
-2- define in styles.css
-	@font-face {
-	    font-family: Bnazanin;
-		    font-weight: normal;
-	     	    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf');
-	    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf') format('truetype'), 
-	    url('/assets/fonts/nazanin/B NAZANIN BOLD_YASDL.COM.ttf') format('truetype');
-	}
-Use HttpClient
-add to app.module.ts --> import { HttpClientModule } from '@angular/common/http'; And in imports --> HttpClientModule
+	font Bnazanin :
+		1- copy fonts in asset		 
+		2- define in styles.css
+		@font-face {
+		    font-family: Bnazanin;
+			    font-weight: normal;
+			    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf');
+		    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf') format('truetype'), 
+		    url('/assets/fonts/nazanin/B NAZANIN BOLD_YASDL.COM.ttf') format('truetype');
+		}
 
-ng g s نام سرویس
-in service :
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+	Use HttpClient
+		add to app.module.ts --> import { HttpClientModule } from '@angular/common/http'; And in imports --> HttpClientModule
+		ng g s نام سرویس
+		in service :
+		import { Injectable } from '@angular/core';
+		import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ServiceService {
-	constructor(private http:HttpClient) { }
+		@Injectable({
+		  providedIn: 'root'
+		})
+		export class ServiceService {
+			constructor(private http:HttpClient) { }
 
-	getquestion(): Observable<Question[]> {
-  		return this.http.get<Question[]>("https://www.ag-grid.com/example-assets/row-data.json")
-	}
+			getquestion(): Observable<Question[]> {
+				return this.http.get<Question[]>("https://www.ag-grid.com/example-assets/row-data.json")
+			}
 
-	postquestion2(question: any) : Observable<string> {
- 		return  this.http.post<string>("http://localhost:19698/api/question", question)
-    	}
-}
+			postquestion2(question: any) : Observable<string> {
+				return  this.http.post<string>("http://localhost:19698/api/question", question)
+			}
+		}
 
-use service
-	1-import { ServiceService } from '../service.service';
-	2-constructor(private api:ServiceService){}
-	ngOnInit()
-	{
-	//	جهت استفاده حتما باید  subscribe  استفاده نمود
-			this.api.getquestion().subscribe(res=>
-  			this.qq=res)
-	}
-	qq:Question[] | undefined
+		use service
+			1-import { ServiceService } from '../service.service';
+			2-constructor(private api:ServiceService){}
+			ngOnInit()
+			{
+			//	جهت استفاده حتما باید  subscribe  استفاده نمود
+					this.api.getquestion().subscribe(res=>
+					this.qq=res)
+			}
+			qq:Question[] | undefined
 
 
-in asp.net core 
-	in ConfigureServices
-	    services.AddCors(option => option.AddPolicy("cors", bulder =>
-	       bulder.AllowAnyOrigin()
-	       .AllowAnyMethod()
-	       .AllowAnyHeader()
-	    ));
-	in Configure app.UseCors("cors");
+		in asp.net core 
+			in ConfigureServices
+			    services.AddCors(option => option.AddPolicy("cors", bulder =>
+			       bulder.AllowAnyOrigin()
+			       .AllowAnyMethod()
+			       .AllowAnyHeader()
+			    ));
+			in Configure app.UseCors("cors");
