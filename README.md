@@ -75,6 +75,7 @@ npm i ngx-toastr --save   نصب toastr
 	}
 
 font Bnazanin : 
+
 	1- copy fonts in asset		 
 	2- define in styles.css
 		@font-face {
