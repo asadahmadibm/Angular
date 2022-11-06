@@ -58,6 +58,29 @@ npm i --save ag-grid-community ag-grid-angular                  نصب ای جی
 	add to style.css --> @import 'ag-grid-community/dist/styles/ag-grid.css';  
 			     @import 'ag-grid-community/dist/styles/ag-theme-alpine.css'; 
 	add to app.module.ts --> import { AgGridModule } from 'ag-grid-angular';  And in imports --> AgGridModule
+	example 
+		in ts :
+			import { ColDef } from 'ag-grid-community';
+			export class AppComponent  {
+			    columnDefs: ColDef[] = [
+				{ field: 'make' },
+				{ field: 'model' },
+				{ field: 'price' }
+			    ];
+			    rowData = [
+				{ make: 'Toyota', model: 'Celica', price: 35000 },
+				{ make: 'Ford', model: 'Mondeo', price: 32000 },
+				{ make: 'Porsche', model: 'Boxster', price: 72000 }
+			    ];
+			}
+		in html :
+			<ag-grid-angular
+			    style="width: 500px; height: 350px;"
+			    class="ag-theme-alpine"
+			    [rowData]="rowData"
+			    [enableRtl]="true"
+			    [columnDefs]="columnDefs">
+			</ag-grid-angular>
 	
 npm i ngx-toastr --save   نصب toastr
 
