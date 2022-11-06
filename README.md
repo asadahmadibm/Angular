@@ -3,6 +3,10 @@
 	Install node.js https://nodejs.org/en/download/
 	npm install -g @angular/cli
 	install Vscode
+	extention for vscode
+		Angular Essentials
+		Angular Language Service
+		Angular Snippets
 	in terminal vscode
 	ng new frontend     // Make Project                 
 	ng serve -o         //Run Project
@@ -33,5 +37,32 @@ ng add @angular/material        اضافه نمودن متریال دیزاین
 	add to style.css --> @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 	add to app.module.ts --> import { MatButtonModule } from '@angular/material/button';  And in imports -->   MatButtonModule
 	example in html <button mat-raised-button color="primary">Primary</button>	
+	
+npm i --save ag-grid-community ag-grid-angular                  نصب ای جی گرید
+
+	add to style.css --> @import 'ag-grid-community/dist/styles/ag-grid.css';  
+			     @import 'ag-grid-community/dist/styles/ag-theme-alpine.css'; 
+	add to app.module.ts --> import { AgGridModule } from 'ag-grid-angular';  And in imports --> AgGridModule
+	
+npm i ngx-toastr --save   نصب toastr
+
+	add to Angular.json  "./node_modules/ngx-toastr/toastr.css"
+	add to app.module.ts --> import { ToastrModule } from 'ngx-toastr'; And in imports --> ToastrModule.forRoot()
+	example use 
+	import { ToastrService } from 'ngx-toastr';
+
+	@Component({...})
+	export class YourComponent {
+	  constructor(private toastr: ToastrService) {}
+
+	  showSuccess() {
+	    this.toastr.success('Hello world!', 'Toastr fun!');
+	  }
+	}
+
+font Iransans : 
+	1- copy fonts in asset		 
+	2- define in styles.css @font-face {...}
+
 	
 
