@@ -84,7 +84,7 @@ npm i --save ag-grid-community ag-grid-angular                  نصب ای جی
 	
 npm i ngx-toastr --save   نصب toastr
 
-	add to Angular.json  "./node_modules/ngx-toastr/toastr.css"
+	add to Angular.json  in styles -->  "./node_modules/ngx-toastr/toastr.css"
 	add to app.module.ts --> import { ToastrModule } from 'ngx-toastr'; And in imports --> ToastrModule.forRoot()
 	example use 
 	import { ToastrService } from 'ngx-toastr';
