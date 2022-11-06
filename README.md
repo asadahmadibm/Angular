@@ -16,6 +16,20 @@
 	ng g c نام کامپوننت
 	ng g s نام سرویس
 	ng g class نام کلاس
+
+
+بعد از ساخت کامپوننت جهت استفاده در اچ تی ام ال داریم
+<نام کامپوننت/><نام کامپوننت>
+تعریف کامپوننت در دوجای زیر
+
+	1- import in app.component.ts
+		import { questioncomponent نام کامپوننت } from './question.component';
+	2- add all component in app.moduls
+		import { questioncomponent نام کامپوننت } from './question.component';
+		add in  declarations
+
+
+
 # Best Component For Project
 
 npm i bootstrap --save اضافه کردن بوت استرپ
@@ -60,9 +74,16 @@ npm i ngx-toastr --save   نصب toastr
 	  }
 	}
 
-font Iransans : 
+font Bnazanin : 
 	1- copy fonts in asset		 
-	2- define in styles.css @font-face {...}
-
+	2- define in styles.css
+		@font-face {
+		    font-family: Bnazanin;
+    		    font-weight: normal;
+    	     	    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf');
+		    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf') format('truetype'), 
+		    url('/assets/fonts/nazanin/B NAZANIN BOLD_YASDL.COM.ttf') format('truetype');
+		}
+		
 	
 
