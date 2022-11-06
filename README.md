@@ -86,5 +86,50 @@ font Bnazanin :
 		    url('/assets/fonts/nazanin/B NAZANIN BOLD_YASDL.COM.ttf') format('truetype');
 		}
 		
+# Use HttpClient		
+
+	add to app.module.ts --> import { HttpClientModule } from '@angular/common/http'; And in imports --> HttpClientModule
+
+	ng g s نام سرویس
+	in service :
+	import { Injectable } from '@angular/core';
+	import { HttpClient } from '@angular/common/http';
+
+	@Injectable({
+	  providedIn: 'root'
+	})
+	export class ServiceService {
+  		constructor(private http:HttpClient) { }
+	
+		getquestion(): Observable<Question[]> {
+	  		return this.http.get<Question[]>("https://www.ag-grid.com/example-assets/row-data.json")
+		}
+	
+		postquestion2(question: any) : Observable<string> {
+	 		return  this.http.post<string>("http://localhost:19698/api/question", question)
+        	}
+  	}
+
+	use service
+		1-import { ServiceService } from '../service.service';
+		2-constructor(private api:ServiceService){}
+		ngOnInit()
+  		{
+		//	جهت استفاده حتما باید  subscribe  استفاده نمود
+    			this.api.getquestion().subscribe(res=>
+      			this.qq=res)
+  		}
+  		qq:Question[] | undefined
+
+   
+	in asp.net core 
+		in ConfigureServices
+		    services.AddCors(option => option.AddPolicy("cors", bulder =>
+		       bulder.AllowAnyOrigin()
+		       .AllowAnyMethod()
+		       .AllowAnyHeader()
+		    ));
+		in Configure app.UseCors("cors");
+		
 	
 
