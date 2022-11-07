@@ -1,5 +1,32 @@
-<div class="row py-2 px-2">
-  <div class="col-4">
+<mat-toolbar color="primary" class="toolbar"> 
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Above</button>
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+
+<button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+</mat-toolbar>
+
+<div class="row justify-content-center py-2 px-2">
+  <div class="col-4 ">
     <div class="card">
       <div class="card-header">
         hello
@@ -10,9 +37,9 @@
         [columnsgrid]="columnDefs">
       </app-admin-grid>
 
-      <div class="d-flex flex-row py-2 px-2">
-        <button class="btn btn-primary mx-1" (click)="showSuccess()">hello</button>
-        <button mat-raised-button color="primary">hello2</button>
+      <div class="d-flex flex-row justify-content-end py-2 px-2">
+        <button class="btn btn-primary mx-1" (click)="showSuccess()">تایید</button>
+        <button mat-raised-button color="primary">انصراف</button>
       </div>
     </div>
 
