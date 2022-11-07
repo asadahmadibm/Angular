@@ -1,5 +1,6 @@
 <ag-grid-angular
-  style="margin: 2px; height: 350px"
+  [ngStyle]="{'height': heightGrid}"
+  style="margin: 2px;"
   class="ag-theme-alpine"
   [rowData]="datagrid"
   [enableRtl]="true"

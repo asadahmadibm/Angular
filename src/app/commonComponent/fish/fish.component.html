@@ -1,0 +1,81 @@
+<div class="col-8 mx-auto p-1">
+    <div class="card ">
+        <div class="card-header">
+            <p> فیش حقوقی</p>
+        </div>
+        <div class="d-flex flex-column flex-sm-row justify-content-between" style="width: 100%;">
+            <div class="d-flex flex-column" style="width: 40%;height: 80vh;">
+                <div>
+                    <mat-form-field appearance="outline" class="example-form-field p-1">
+                        <mat-label>سال </mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="month">
+                        <mat-label>ماه</mat-label>
+                        <mat-select>
+                            <mat-option value="option1">فروردین</mat-option>
+                            <mat-option value="option2">اردیبهشت</mat-option>
+                            <mat-option value="option3">خرداد</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="p-1">
+                    <mat-form-field appearance="outline" class="loc">
+                        <mat-label>محل خدمت</mat-label>
+                        <mat-select>
+                            <mat-option value="option1">رضا راد</mat-option>
+                            <mat-option value="option2">شرکت رضا راد 2</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="p-1">
+                    <mat-form-field appearance="outline" class="loc">
+                        <mat-label> کارگاه</mat-label>
+                        <mat-select>
+                            <mat-option value="option1"> دفتر مرکزی</mat-option>
+                            <mat-option value="option2"> کارخانه </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="prsid p-1">
+                        <mat-label>کد پرسنلی </mat-label>
+                        <input matInput type="text">
+                    </mat-form-field>
+                    <button mat-raised-button m color="primary">جستجو</button>
+                </div>
+                <div class="p-1" style="height: 70%;">
+                    <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+                    </app-admin-grid>
+                </div>
+            </div>
+            <div class="d-flex " style="width: 60%;height: 80vh;">
+                <div class="w-50" style="height: 80vh ;">
+                    <div class="p-1" style="height: 50%;">
+                        <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+                        </app-admin-grid>
+                    </div>
+                    <div class="p-1" style="height: 50%;">
+                        <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+                        </app-admin-grid>
+                    </div>
+                </div>
+                <div class="w-50" style="height: 80vh;" >
+                    <div class="p-1" style="height: 33.3%;">
+                        <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+                        </app-admin-grid>
+                    </div>
+                    <div class="p-1" style="height: 33.3%;">
+                        <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+                        </app-admin-grid>
+                    </div>
+                    <div class="p-1" style="height: 33.3%;">
+                        <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+                        </app-admin-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

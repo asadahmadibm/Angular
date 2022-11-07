@@ -1,0 +1,19 @@
+<div class="col-4 mx-auto p-1">
+    <div class="card">
+      <div class="card-header p-1 d-flex align-items-baseline justify-content-between ">
+        <div class="px-2" style="font-weight:bold;">
+          <p>لیست </p>
+        </div>
+        <div>
+          <button class="btn btn-primary btn-sm mx-1" (click)="showSuccess()">تایید</button>
+          <button mat-raised-button m color="primary">انصراف</button>
+        </div>
+      </div>
+  
+      <app-admin-grid [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+      </app-admin-grid>
+  
+  
+    </div>
+  
+  </div>

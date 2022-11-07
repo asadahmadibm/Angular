@@ -9,6 +9,7 @@ import { ColDef } from "ag-grid-community";
 export class AdminGridComponent implements OnInit {
   @Input() datagrid: any;
   @Input() columnsgrid: any;
+  @Input() heightGrid :any
   private gridApi: any;
   onGridReady(params: any) {
     params.api.sizeColumnsToFit();
