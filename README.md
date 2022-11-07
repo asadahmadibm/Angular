@@ -83,16 +83,34 @@
 	  }
 	}
 
-## font Bnazanin 
+## font IRANSans 
 	1- copy fonts in asset		 
 	2- define in styles.css
 	@font-face {
-	    font-family: Bnazanin;
-		    font-weight: normal;
-		    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf');
-	    src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf') format('truetype'), 
-	    url('/assets/fonts/nazanin/B NAZANIN BOLD_YASDL.COM.ttf') format('truetype');
+		  font-family: IRANSans;
+		  font-style: normal;
+		  font-weight: normal;
+		  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum).eot');
+		  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'),
+		      /* IE6-8 */
+		      url('/assets/fonts/iransans/woff2/IRANSansWeb(FaNum).woff2') format('woff2'),
+		      /* FF39+,Chrome36+, Opera24+*/
+		      url('/assets/fonts/iransans/woff/IRANSansWeb(FaNum).woff') format('woff'),
+		      /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+		      url('/assets/fonts/iransans/ttf/IRANSansWeb(FaNum).ttf') format('truetype');
+		}
+	example use 
+	:root {
+		--main-fa-font: "IRANSans";
+	      }
+	body {
+	  font-family: var(--main-fa-font) !important;
 	}
+	.mat-toolbar, .mat-button , .mat-raised-button, .mat-menu-item, .mat-input-element, .mat-form-field, .mat-option, .mat-select,
+	.mat-slide-toggle-content {
+	    font-family: var(--main-fa-font) !important;
+	}
+
 
 ## Use HttpClient
 	add to app.module.ts --> import { HttpClientModule } from '@angular/common/http'; And in imports --> HttpClientModule
