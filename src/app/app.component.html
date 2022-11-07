@@ -29,24 +29,22 @@
   </div>
 </mat-toolbar>
 
-<div class="row justify-content-center py-2 px-2">
-  <div class="col-4 ">
-    <div class="card">
-      <div class="card-header d-flex justify-content-between">
-        <div>
-          <p>hello</p>
-        </div>
-        <div>
-          <button class="btn btn-primary mx-1" (click)="showSuccess()">تایید</button>
-          <button mat-raised-button color="primary">انصراف</button>
-        </div>
+<div class="col-4 mx-auto py-1 px-1">
+  <div class="card">
+    <div class="card-header p-1 d-flex align-items-baseline justify-content-between ">
+      <div>
+        <p>hello</p>
       </div>
-
-      <app-admin-grid [datagrid]="this.rowData" [columnsgrid]="columnDefs">
-      </app-admin-grid>
-
-
+      <div>
+        <button class="btn btn-primary mx-1" (click)="showSuccess()">تایید</button>
+        <button mat-raised-button color="primary">انصراف</button>
+      </div>
     </div>
 
+    <app-admin-grid [datagrid]="this.rowData" [columnsgrid]="columnDefs">
+    </app-admin-grid>
+
+
   </div>
+
 </div>
