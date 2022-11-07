@@ -7,9 +7,152 @@
 @import 'ag-grid-community/dist/styles/ag-grid.css';
 @import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
-.body .html{
+.body,
+.html{
   direction: rtl !important;
 }
+
+
+
+
+@font-face {
+  font-family: Bnazanin;
+  font-weight: normal;
+  src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf');
+  src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf') format('truetype'), url('/assets/fonts/nazanin/B NAZANIN BOLD_YASDL.COM.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-weight: normal;
+  src: url('/assets/fonts/vazir/Vazir.eot');
+  src: url('/assets/fonts/vazir/Vazir.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir.woff') format('woff'), url('/assets/fonts/vazir/Vazir.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-weight: bold;
+  src: url('/assets/fonts/vazir/Vazir-Bold.eot');
+  src: url('/assets/fonts/vazir/Vazir-Bold.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Bold.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Bold.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-weight: 300;
+  src: url('/assets/fonts/vazir/Vazir-Light.eot');
+  src: url('/assets/fonts/vazir/Vazir-Light.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Light.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Light.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-weight: 500;
+  src: url('/assets/fonts/vazir/Vazir-Medium.eot');
+  src: url('/assets/fonts/vazir/Vazir-Medium.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Medium.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Medium.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-weight: 100;
+  src: url('/assets/fonts/vazir/Vazir-Thin.eot');
+  src: url('/assets/fonts/vazir/Vazir-Thin.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Thin.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Thin.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Vazir;
+  font-weight: 900;
+  src: url('/assets/fonts/vazir/Vazir-Black.eot');
+  src: url('/assets/fonts/vazir/Vazir-Black.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Black.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Black.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: bold;
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_Bold.eot');
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_Bold.eot?#iefix') format('embedded-opentype'),
+      /* IE6-8 */
+      url('/assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'),
+      /* FF39+,Chrome36+, Opera24+*/
+      url('/assets/fonts/iransans/woff/IRANSansWeb(FaNum)_Bold.woff') format('woff'),
+      /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('/assets/fonts/iransans/ttf/IRANSansWeb(FaNum)_Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 500;
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_Medium.eot');
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_Medium.eot?#iefix') format('embedded-opentype'),
+      /* IE6-8 */
+      url('/assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_Medium.woff2') format('woff2'),
+      /* FF39+,Chrome36+, Opera24+*/
+      url('/assets/fonts/iransans/woff/IRANSansWeb(FaNum)_Medium.woff') format('woff'),
+      /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('/assets/fonts/iransans/ttf/IRANSansWeb(FaNum)_Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 300;
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_Light.eot');
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_Light.eot?#iefix') format('embedded-opentype'),
+      /* IE6-8 */
+      url('/assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_Light.woff2') format('woff2'),
+      /* FF39+,Chrome36+, Opera24+*/
+      url('/assets/fonts/iransans/woff/IRANSansWeb(FaNum)_Light.woff') format('woff'),
+      /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('/assets/fonts/iransans/ttf/IRANSansWeb(FaNum)_Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: 200;
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_UltraLight.eot');
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum)_UltraLight.eot?#iefix') format('embedded-opentype'),
+      /* IE6-8 */
+      url('/assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_UltraLight.woff2') format('woff2'),
+      /* FF39+,Chrome36+, Opera24+*/
+      url('/assets/fonts/iransans/woff/IRANSansWeb(FaNum)_UltraLight.woff') format('woff'),
+      /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('/assets/fonts/iransans/ttf/IRANSansWeb(FaNum)_UltraLight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum).eot');
+  src: url('/assets/fonts/iransans/eot/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'),
+      /* IE6-8 */
+      url('/assets/fonts/iransans/woff2/IRANSansWeb(FaNum).woff2') format('woff2'),
+      /* FF39+,Chrome36+, Opera24+*/
+      url('/assets/fonts/iransans/woff/IRANSansWeb(FaNum).woff') format('woff'),
+      /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+      url('/assets/fonts/iransans/ttf/IRANSansWeb(FaNum).ttf') format('truetype');
+}
+
+
+:root {
+  --main-color-1: #07b7a6;
+  --main-color-2: #683896;
+  --main-fa-font: "IRANSans";
+  --iconsSizeInCollapsedMenu: 22;
+}
+
+
+
+body {
+  font-family: var(--main-fa-font) !important;
+}
+
+svg *,
+.main-font {
+    font-family: var(--main-fa-font) !important;
+}
+
 
 /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
 
