@@ -12,58 +12,6 @@
   direction: rtl !important;
 }
 
-
-
-
-@font-face {
-  font-family: Bnazanin;
-  font-weight: normal;
-  src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf');
-  src: url('/assets/fonts/nazanin/B NAZANIN_YASDL.COM.ttf') format('truetype'), url('/assets/fonts/nazanin/B NAZANIN BOLD_YASDL.COM.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: Vazir;
-  font-weight: normal;
-  src: url('/assets/fonts/vazir/Vazir.eot');
-  src: url('/assets/fonts/vazir/Vazir.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir.woff') format('woff'), url('/assets/fonts/vazir/Vazir.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: Vazir;
-  font-weight: bold;
-  src: url('/assets/fonts/vazir/Vazir-Bold.eot');
-  src: url('/assets/fonts/vazir/Vazir-Bold.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Bold.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Bold.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Bold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: Vazir;
-  font-weight: 300;
-  src: url('/assets/fonts/vazir/Vazir-Light.eot');
-  src: url('/assets/fonts/vazir/Vazir-Light.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Light.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Light.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Light.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: Vazir;
-  font-weight: 500;
-  src: url('/assets/fonts/vazir/Vazir-Medium.eot');
-  src: url('/assets/fonts/vazir/Vazir-Medium.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Medium.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Medium.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Medium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: Vazir;
-  font-weight: 100;
-  src: url('/assets/fonts/vazir/Vazir-Thin.eot');
-  src: url('/assets/fonts/vazir/Vazir-Thin.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Thin.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Thin.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Thin.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: Vazir;
-  font-weight: 900;
-  src: url('/assets/fonts/vazir/Vazir-Black.eot');
-  src: url('/assets/fonts/vazir/Vazir-Black.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/vazir/Vazir-Black.woff2') format('woff2'), url('/assets/fonts/vazir/Vazir-Black.woff') format('woff'), url('/assets/fonts/vazir/Vazir-Black.ttf') format('truetype');
-}
-
 @font-face {
   font-family: IRANSans;
   font-style: normal;
@@ -142,15 +90,14 @@
   --iconsSizeInCollapsedMenu: 22;
 }
 
+.mat-toolbar, .mat-button , .mat-raised-button, .mat-menu-item, .mat-input-element, .mat-form-field, .mat-option, .mat-select,
+.mat-slide-toggle-content {
+    font-family: var(--main-fa-font) !important;
+}
 
 
 body {
   font-family: var(--main-fa-font) !important;
-}
-
-svg *,
-.main-font {
-    font-family: var(--main-fa-font) !important;
 }
 
 
