@@ -100,17 +100,16 @@
 		      url('/assets/fonts/iransans/ttf/IRANSansWeb(FaNum).ttf') format('truetype');
 		}
 	example use 
-	:root {
-		--main-fa-font: "IRANSans";
-	      }
-	body {
-	  font-family: var(--main-fa-font) !important;
-	}
-	.mat-toolbar, .mat-button , .mat-raised-button, .mat-menu-item, .mat-input-element, .mat-form-field, .mat-option, .mat-select,
-	.mat-slide-toggle-content {
-	    font-family: var(--main-fa-font) !important;
-	}
-
+		:root {
+			--main-fa-font: "IRANSans";
+		}
+		body {
+			font-family: var(--main-fa-font) !important;
+		}
+		.mat-toolbar, .mat-button , .mat-raised-button, .mat-menu-item, .mat-input-element, .mat-form-field, .mat-option, .mat-select,
+		.mat-slide-toggle-content {
+		    font-family: var(--main-fa-font) !important;
+		}
 
 ## Use HttpClient
 	add to app.module.ts --> import { HttpClientModule } from '@angular/common/http'; And in imports --> HttpClientModule
