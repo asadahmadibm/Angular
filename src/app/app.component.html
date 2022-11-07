@@ -1,28 +1,32 @@
-<mat-toolbar color="primary" class="toolbar"> 
-  <button mat-button [matMenuTriggerFor]="aboveMenu">Above</button>
-<mat-menu #aboveMenu="matMenu" yPosition="above">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+<mat-toolbar color="primary" class="toolbar d-flex justify-content-between">
 
-<button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
-<mat-menu #belowMenu="matMenu" yPosition="below">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+  <div>
+    <button mat-button [matMenuTriggerFor]="aboveMenu">Above</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
-<mat-menu #beforeMenu="matMenu" xPosition="before">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+    <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
 
+    <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
 
-<button mat-button [matMenuTriggerFor]="afterMenu">After</button>
-<mat-menu #afterMenu="matMenu" xPosition="after">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+  <div>
+    <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+    <mat-menu #afterMenu="matMenu" xPosition="after">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 
 <div class="row justify-content-center py-2 px-2">
@@ -32,9 +36,7 @@
         hello
       </div>
 
-      <app-admin-grid
-        [datagrid]="this.rowData"
-        [columnsgrid]="columnDefs">
+      <app-admin-grid [datagrid]="this.rowData" [columnsgrid]="columnDefs">
       </app-admin-grid>
 
       <div class="d-flex flex-row justify-content-end py-2 px-2">
