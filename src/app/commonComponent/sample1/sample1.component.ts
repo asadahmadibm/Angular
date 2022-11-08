@@ -3,8 +3,9 @@ import { ColDef } from "ag-grid-community";
 import { ToastrService } from "ngx-toastr";
 import { industryModel } from "src/app/models/industry.model";
 import { resultMessage } from "src/app/models/resultMessage.model";
-import { IndustryService } from "src/app/services/industry.service";
-import { LoginService } from "src/app/services/login.service";
+import { AuthenticateService } from "src/app/services/authenticate/authenticate.service";
+import { IndustryService } from "src/app/services/crm/industry.service";
+
 
 @Component({
   selector: "app-sample1",
@@ -15,20 +16,25 @@ export class Sample1Component implements OnInit {
   constructor(
     private toastr: ToastrService,
     private industryservice: IndustryService,
-    private loginServicea: LoginService
+    private authenticateService: AuthenticateService
   ) {}
   industrydate: industryModel[] = [];
   industry: industryModel = { IndustryID: 11, IndustryName: "name11" };
   ngOnInit(): void {
-    this.loginServicea.loginTest().subscribe((rest: any) => {
-      console.log(rest["data"]["token"]);
+    this.authenticateService.loginTest().subscribe((rest: any) => {
       localStorage.setItem("token", rest["data"]["token"]);
     });
 
-    this.industryservice.getindustry().subscribe((rest) => {
-      this.industrydate = rest;
-      console.log(this.industrydate);
-    });
+    // this.industryservice.getindustry().subscribe((rest) => {
+    //   this.industrydate = rest;
+    //   //console.log(this.industrydate);
+    // });
+
+    this.industryservice.getindustry2().subscribe(res=>{
+      this.industrydate = res;
+      console.log(res);
+      
+    })
   }
   columnDefs: ColDef[] = [
     { field: "make" },

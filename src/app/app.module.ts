@@ -12,11 +12,13 @@ import { AgGridModule } from 'ag-grid-angular';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminGridComponent } from './commonComponent/admin-grid/admin-grid.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MenuComponent } from './commonComponent/menu/menu.component';
 import { Sample1Component } from './commonComponent/sample1/sample1.component';
 import { FishComponent } from './commonComponent/fish/fish.component';
+import { AuthInterceptorInterceptor } from './services/interceptor/authenticate.interceptor';
+import { LogoutComponent } from './commonComponent/Authenticate/logout/logout.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { FishComponent } from './commonComponent/fish/fish.component';
     AdminGridComponent,
     MenuComponent,
     Sample1Component,
-    FishComponent
+    FishComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,11 @@ import { FishComponent } from './commonComponent/fish/fish.component';
     HttpClientModule
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+     {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptorInterceptor,multi:true} ,
+  ],
+  bootstrap: [AppComponent],
+  
+
 })
 export class AppModule { }
