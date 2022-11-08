@@ -19,6 +19,7 @@ import { Sample1Component } from './commonComponent/sample1/sample1.component';
 import { FishComponent } from './commonComponent/fish/fish.component';
 import { AuthInterceptorInterceptor } from './services/interceptor/authenticate.interceptor';
 import { LogoutComponent } from './commonComponent/Authenticate/logout/logout.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import { LogoutComponent } from './commonComponent/Authenticate/logout/logout.co
     AgGridModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [

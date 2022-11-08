@@ -25,7 +25,6 @@ getindustry2() :Observable<any[]>
   );
 }
 
-
   insert(question: industryModel): Observable<resultMessage> {
     return this.http.post<resultMessage>(
       "http://46.100.47.160:8013/api/Industry/Insert",

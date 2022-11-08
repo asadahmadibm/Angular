@@ -1,4 +1,10 @@
 import { Component, OnInit } from "@angular/core";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { ColDef } from "ag-grid-community";
 import { ToastrService } from "ngx-toastr";
 import { industryModel } from "src/app/models/industry.model";
@@ -6,21 +12,24 @@ import { resultMessage } from "src/app/models/resultMessage.model";
 import { AuthenticateService } from "src/app/services/authenticate/authenticate.service";
 import { IndustryService } from "src/app/services/crm/industry.service";
 
-
 @Component({
   selector: "app-sample1",
   templateUrl: "./sample1.component.html",
   styleUrls: ["./sample1.component.css"],
 })
 export class Sample1Component implements OnInit {
+  form: any
   constructor(
+    private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private industryservice: IndustryService,
     private authenticateService: AuthenticateService
   ) {}
-  industrydate: industryModel[] = [];
-  industry: industryModel = { IndustryID: 11, IndustryName: "name11" };
+
   ngOnInit(): void {
+
+    this.initForm(); //set form controller and validations
+
     this.authenticateService.loginTest().subscribe((rest: any) => {
       localStorage.setItem("token", rest["data"]["token"]);
     });
@@ -30,29 +39,41 @@ export class Sample1Component implements OnInit {
     //   //console.log(this.industrydate);
     // });
 
-    this.industryservice.getindustry2().subscribe(res=>{
-      this.industrydate = res;
-      console.log(res);
-      
-    })
+    this.getindustry();
+    
   }
-  columnDefs: ColDef[] = [
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-  ];
 
-  rowData = [
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxster", price: 72000 },
-  ];
-  showSuccess() {
+  getindustry() {
+    this.industryservice.getindustry2().subscribe((res) => {
+      this.rowData = res;
+    });
+  }
+  initForm() {
+    // this.form.addControl("IndustryId", new FormControl());
+    // this.form.addControl("IndustryName", new FormControl());
+    this.form = this.formBuilder.group({
+      "IndustryId": ["", Validators.required],
+      "IndustryName": ["", Validators.required],
+    });
+  }
+
+  columnDefs: ColDef[] = [{ field: "IndustryID" }, { field: "IndustryName" }];
+
+  rowData: industryModel[] = [];
+
+  onSubmit() {
+    console.log(this.form.value);
+    
     this.industryservice
-      .insert(this.industry)
+      .insert(this.form.value)
       .subscribe((rest: resultMessage) => {
         console.log(rest);
+        this.getindustry();
+        this.toastr.success("Hello world!", "Toastr fun!");
       });
+  }
+
+  showSuccess() {
     this.toastr.success("Hello world!", "Toastr fun!");
   }
 }
