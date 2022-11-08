@@ -198,6 +198,50 @@
 	2- in provider --> 
 		 {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true} ,
 
+## ذخیره سازی توکن
+	return this.http.post("http://localhost:8238/api/Account",qq,{responseType: 'text'}).subscribe(res=>{
+	  console.log(res);
+	  localStorage.setItem('token',res)
+	  })
+		  
+##  ساخت توکن در بک اند
+		  
+
+	 1-Add in ConfigureService  -->
+		  var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret key"));
+		    services.AddAuthentication(options =>
+		    {
+			options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+			options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+		    }).AddJwtBearer(cfg =>
+		    {
+			cfg.RequireHttpsMetadata = false;
+			cfg.SaveToken = true;
+			cfg.TokenValidationParameters = new TokenValidationParameters()
+			{
+			    IssuerSigningKey = signingKey,
+			    ValidateAudience = false,
+			    ValidateIssuer = false,
+			    ValidateLifetime = false,
+			    ValidateIssuerSigningKey = true
+			};
+		    });
+	2- add in services -->  app.UseAuthentication();
+	3- add in register service -->
+		    var claims = new Claim[]
+		    {
+			new Claim(JwtRegisteredClaimNames.Sub, user.Id) 
+		    };
+
+		    var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret key"));
+		    var signingCredentials = new SigningCredentials(signingKey,SecurityAlgorithms.HmacSha256);
+
+		    var jwt = new JwtSecurityToken(signingCredentials: signingCredentials,claims: claims);
+		    return Content(new JwtSecurityTokenHandler().WriteToken(jwt));		
+ 
+		  
+		  
+		  
 
 
 		
