@@ -239,7 +239,155 @@
 		    var jwt = new JwtSecurityToken(signingCredentials: signingCredentials,claims: claims);
 		    return Content(new JwtSecurityTokenHandler().WriteToken(jwt));		
  
-		  
+## جهت ایجاد فرم در تی اس ان داریم		  
+
+	import { Component, OnInit } from '@angular/core';
+	import { UserService } from 'src/app/services/user.service';
+	import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+	import { Router } from '@angular/router';
+	import { ToastrService } from 'ngx-toastr';
+
+	@Component({
+	  selector: 'app-add-user',
+	  templateUrl: './add-user.component.html',
+	  styleUrls: ['./add-user.component.css']
+	})
+	export class AddUserComponent implements OnInit {
+	  submitted: boolean= false;
+	  userForm: any;
+
+	  constructor(private formBuilder: FormBuilder,private toastr: ToastrService,private userService: UserService,private router:Router) { }
+
+	  ngOnInit(): void {
+	    this.userForm = this.formBuilder.group({
+	      "UserName": ["", Validators.required],
+	      "EmailId": ["", Validators.required],
+	      "Gender": ["", Validators.required],
+	      "Address": ["", Validators.required],
+	      "MobileNo": ["", Validators.required],
+	      "PinCode": ["", Validators.required]
+	    });
+
+	  }
+
+	  onSubmit() {
+	    this.submitted = true;
+	    if (this.userForm.invalid) {
+	      return;
+	    }
+
+	    this.userService.addUser(this.userForm.value)
+	      .subscribe( data => {
+		this.toastr.success("success", data.toString());
+		this.router.navigate(['users']);
+	      });
+
+
+	  }
+
+	  Cancel()
+	  {
+	    this.router.navigate(['users']);
+	  }
+
+	}
+	
+## در فرم اچ تی ام ال داریم
+
+	<div class="container">
+	  <div class="row">
+
+	    <div class="col-md-8">
+	      <h1><span class="badge badge-dark" id="header">User Registration</span></h1>
+	      <hr>
+	      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+		<div class="row">
+		  <div class="col-md-4">
+		    <label for="firstName">User Name:</label>
+		  </div>
+		  <div class="col-md-6">
+		    <input type="text" class="form-control" formControlName="UserName">
+		    <div *ngIf="submitted && userForm.controls.UserName.errors" class="error">
+		      <div *ngIf="userForm.controls.UserName.errors.required">First name is required</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="row">
+		  <div class="col-md-4">
+		    <label for="firstName">EmailId:</label>
+		  </div>
+		  <div class="col-md-6">
+		    <input type="text" class="form-control" formControlName="EmailId">
+		    <div *ngIf="submitted && userForm.controls.EmailId.errors" class="error">
+		      <div *ngIf="userForm.controls.EmailId.errors.required">EmailId is required</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="row">
+		  <div class="col-md-4">
+		    <label for="firstName">Gender:</label>
+		  </div>
+		  <div class="col-md-6">
+		    <input type="email" class="form-control" formControlName="Gender">
+		    <div *ngIf="submitted && userForm.controls.Gender.errors" class="error">
+		      <div *ngIf="userForm.controls.Gender.errors.required">Gender is required</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="row">
+		  <div class="col-md-4">
+		    <label for="firstName">Address:</label>
+		  </div>
+		  <div class="col-md-6">
+		    <input type="text" class="form-control" formControlName="Address">
+		    <div *ngIf="submitted && userForm.controls.Address.errors" class="error">
+		      <div *ngIf="userForm.controls.Address.errors.required">Address is required</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="row">
+		  <div class="col-md-4">
+		    <label for="firstName">Mobile:</label>
+		  </div>
+		  <div class="col-md-6">
+		    <input type="text" class="form-control" formControlName="MobileNo">
+		    <div *ngIf="submitted && userForm.controls.MobileNo.errors" class="error">
+		      <div *ngIf="userForm.controls.MobileNo.errors.required">Mobile number is required</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="row">
+		  <div class="col-md-4">
+		    <label for="firstName">Pin Code:</label>
+		  </div>
+		  <div class="col-md-6">
+		    <input type="text" class="form-control" formControlName="PinCode">
+		    <div *ngIf="submitted && userForm.controls.MobileNo.errors" class="error">
+		      <div *ngIf="userForm.controls.PinCode.errors.required">PinCode is required</div>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="row">
+		  <div class="col-md-4">
+
+		  </div>
+		  <div class="col-md-4">
+		    <button type="submit" class="btn btn-primary">Submit</button> &nbsp;&nbsp;
+		    <input type="button" class="btn btn-warning" (click)="Cancel()" value="Cancel">
+		</div>
+		  </div>
+	      </form>
+	    </div>
+
+	  </div>
+	</div>
 		  
 		  
 
