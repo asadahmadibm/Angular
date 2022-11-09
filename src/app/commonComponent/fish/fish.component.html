@@ -5,22 +5,28 @@
         </div>
         <div class="d-flex flex-column flex-sm-row justify-content-between" style="width: 100%;">
             <div class="d-flex flex-column" style="width: 40%;height: 80vh;">
-                <div>
-                    <mat-form-field appearance="outline" class="example-form-field p-1">
-                        <mat-label>سال </mat-label>
-                        <input matInput type="text">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="month">
-                        <mat-label>ماه</mat-label>
-                        <mat-select>
-                            <mat-option value="option1">فروردین</mat-option>
-                            <mat-option value="option2">اردیبهشت</mat-option>
-                            <mat-option value="option3">خرداد</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <div class="p-1">
+                    <div class="d-flex ">
+                        <div class="w-50">
+                            <mat-form-field appearance="outline">
+                                <mat-label>سال </mat-label>
+                                <input matInput type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="w-50 px-1">
+                            <mat-form-field appearance="outline">
+                                <mat-label>ماه</mat-label>
+                                <mat-select>
+                                    <mat-option value="option1">فروردین</mat-option>
+                                    <mat-option value="option2">اردیبهشت</mat-option>
+                                    <mat-option value="option3">خرداد</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
                 </div>
                 <div class="p-1">
-                    <mat-form-field appearance="outline" class="loc">
+                    <mat-form-field appearance="outline">
                         <mat-label>محل خدمت</mat-label>
                         <mat-select>
                             <mat-option value="option1">رضا راد</mat-option>
@@ -29,7 +35,7 @@
                     </mat-form-field>
                 </div>
                 <div class="p-1">
-                    <mat-form-field appearance="outline" class="loc">
+                    <mat-form-field appearance="outline">
                         <mat-label> کارگاه</mat-label>
                         <mat-select>
                             <mat-option value="option1"> دفتر مرکزی</mat-option>
@@ -37,12 +43,18 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div>
-                    <mat-form-field appearance="outline" class="prsid p-1">
-                        <mat-label>کد پرسنلی </mat-label>
-                        <input matInput type="text">
-                    </mat-form-field>
-                    <button mat-raised-button m color="primary">جستجو</button>
+                <div class="p-1">
+                    <div class="d-flex">
+                        <div >
+                            <mat-form-field appearance="outline">
+                                <mat-label>کد پرسنلی </mat-label>
+                                <input matInput type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="px-1">
+                            <button mat-raised-button m color="primary">جستجو</button>
+                        </div>
+                    </div>
                 </div>
                 <div class="p-1" style="height: 70%;">
                     <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
@@ -60,7 +72,7 @@
                         </app-admin-grid>
                     </div>
                 </div>
-                <div class="w-50" style="height: 80vh;" >
+                <div class="w-50" style="height: 80vh;">
                     <div class="p-1" style="height: 33.3%;">
                         <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
                         </app-admin-grid>
@@ -78,4 +90,3 @@
         </div>
     </div>
 </div>
-

@@ -20,6 +20,7 @@ import { FishComponent } from './commonComponent/fish/fish.component';
 import { AuthInterceptorInterceptor } from './services/interceptor/authenticate.interceptor';
 import { LogoutComponent } from './commonComponent/Authenticate/logout/logout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccComponent } from './commonComponent/acc/acc.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MenuComponent,
     Sample1Component,
     FishComponent,
-    LogoutComponent
+    LogoutComponent,
+    AccComponent
   ],
   imports: [
     BrowserModule,

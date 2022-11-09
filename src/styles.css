@@ -104,7 +104,111 @@ body {
   font-family: var(--main-fa-font) !important;
 }
 
+.mat-toolbar, .mat-button, .mat-menu-item, .mat-input-element, .mat-form-field, .mat-option, .mat-select,
+.mat-slide-toggle-content {
+    font-family: iransans;
+}
 
+.mat-toolbar {
+    font-size: 14px;
+}
+
+/* .mat-toolbar.mat-primary {
+  background: #0747A6;
+  color: #fff;
+} */
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+    z-index: 1200;
+}
+
+.mat-form-field {
+    display: block !important;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+dynamic-form .row>* {
+    margin-top: .4rem;
+}
+
+.mat-form-field-flex > .mat-form-field-infix {
+     padding: 0.4em 0px !important;
+}
+
+.mat-form-field-label-wrapper {
+     top: -1.5em;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+
+.mat-menu-item {
+  height: 36px !important;
+}
+
+.mat-focus-indicator.mat-menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.mat-form-field-subscript-wrapper {
+  top: calc(100% - .5em);
+}
+
+.mat-list-option {
+  font-family: iransans;
+  font-size: 13px;
+}
+
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+  height: 30px !important;
+  font-size: 13px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0 !important;
+}
+
+.mat-option {
+  font-size: 13px;
+  height: 30px !important;
+}
+
+.mat-form-field-infix {
+  width: auto !important;
+}
+
+.mat-standard-chip {
+  min-height: 24px !important;
+  font-size: 12px;
+}
+
+.mat-standard-chip .mat-chip-remove, .mat-standard-chip .mat-chip-trailing-icon {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.mat-chip-list-wrapper input.mat-input-element, .mat-chip-list-wrapper .mat-standard-chip {
+  margin: 1px !important;
+}
+
+.mat-chip-list-wrapper {
+  margin: -1px !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: -.1em !important;
+}
+
+.mat-form-field-disabled .mat-form-field-outline{
+  background-color: rgba(0,0,0,.05);
+}
 
 
 
