@@ -24,7 +24,7 @@
             <p>جزییات </p>
           </div>
           <div>
-            <button class="btn btn-primary btn-sm mx-1" type="submit" (click)="onSubmit()">تایید</button>
+            <button class="btn btn-primary btn-sm mx-1"  [disabled]="!form.valid" type="submit" (click)="onSubmit()">تایید</button>
             <button mat-raised-button m color="primary" class="m-1">انصراف</button>
           </div>
         </div>
