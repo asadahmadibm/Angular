@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ColDef } from "ag-grid-community";
 
 @Component({
@@ -10,12 +10,20 @@ export class AdminGridComponent implements OnInit {
   @Input() datagrid: any;
   @Input() columnsgrid: any;
   @Input() heightGrid :any
-  private gridApi: any;
+  @Output() refreshdata =new EventEmitter<any>()
+ 
+  public gridApi: any;
+
   onGridReady(params: any) {
     params.api.sizeColumnsToFit();
     this.gridApi = params.api;
+    this.refreshdata.emit(this.gridApi);
+
   }
+  
   constructor() {}
 
   ngOnInit(): void {}
+
+
 }

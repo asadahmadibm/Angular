@@ -1,42 +1,90 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-<div class="d-flex mx-auto flex-row justify-content-start">
+<form [formGroup]="form">
+  <div class="d-flex mx-auto flex-row justify-content-start">
 
-  <div class="col-4 p-1">
-    <div class="card">
+    <div class="col-8 p-1">
+      <div class="card">
 
-      <div class="card-header p-1 d-flex">
-        <div class="px-2" style="font-weight:bold;">
-          <p>لیست </p>
+        <div class="card-header p-1 d-flex">
+          <div class="px-2" style="font-weight:bold;">
+            <p>لیست </p>
+          </div>
+        </div>
+        <div style="height: 80vh;">
+          <app-admin-grid (refreshdata)="refresh($event)" heightGrid="100%" [datagrid]="rowData"
+            [columnsgrid]="columnDefs">
+          </app-admin-grid>
         </div>
       </div>
-      <div style="height: 80vh;">
-        <app-admin-grid heightGrid="100%" [datagrid]="this.rowData" [columnsgrid]="columnDefs">
-        </app-admin-grid>
-      </div>
     </div>
-  </div>
-  
-    <div class="col-2 p-1">
+
+    <div class="col-3 p-1">
       <div class="card">
         <div class="card-header p-1 d-flex align-items-baseline justify-content-between ">
           <div class="px-2" style="font-weight:bold;">
             <p>جزییات </p>
           </div>
           <div>
-            <button class="btn btn-primary btn-sm mx-1" (click)="showSuccess()">تایید</button>
-            <button mat-raised-button m color="primary">انصراف</button>
+            <button class="btn btn-primary btn-sm mx-1" type="submit" (click)="onSubmit()">تایید</button>
+            <button mat-raised-button m color="primary" class="m-1">انصراف</button>
           </div>
         </div>
-        <mat-form-field appearance="outline" class="example-form-field p-1">
+        <mat-form-field appearance="outline" class="p-1">
           <mat-label>کد </mat-label>
-          <input matInput type="text" formControlName="IndustryId">
+          <input matInput type="number" formControlName="IndustryID">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="example-form-field p-1">
+        <mat-form-field appearance="outline" class="p-1">
           <mat-label>نام </mat-label>
           <input matInput type="text" formControlName="IndustryName">
         </mat-form-field>
+        <mat-form-field appearance="outline" class="p-1">
+          <mat-label>ماه</mat-label>
+          <mat-select formControlName="Month">
+            <mat-option *ngFor="let data of matselectdata" value="{{data.id}}">{{data.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="p-1">
+          <mat-label>سال</mat-label>
+          <input type="text" placeholder="سال انتخابی" aria-label="Number" matInput formControlName="Year"
+            [matAutocomplete]="auto">
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="p-1">
+          <mat-label>گروه</mat-label>
+
+          <mat-select formControlName="Group" multiple>
+
+            <mat-select-trigger>
+              <mat-chip-list>
+                <mat-chip *ngFor="let item of form.controls.Group.value" [removable]="true"
+                  (removed)="onChipRemoved(item, form.controls.Group)">
+                  {{ item }}
+                  <button class="btn-close" matChipRemove></button>
+                </mat-chip>
+              </mat-chip-list>
+            </mat-select-trigger>
+
+            <mat-option *ngFor="let item of groupItem " [value]="item">
+              {{item}}
+            </mat-option>
+
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field  appearance="outline" class="p-1">
+          <mat-label>تاریخ شروع</mat-label>
+          <input matInput  [min]="MinDate" [matDatepicker]="picker6" [value]="aDate" placeholder="تاریخ شروع"  (dateInput)="onInput($event)" (dateChange)="onChange($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+          <mat-datepicker #picker6></mat-datepicker>
+        </mat-form-field>
+
       </div>
     </div>
-  
-</div>
+
+  </div>
 </form>
