@@ -8,5 +8,6 @@
   [headerHeight]="30"
   (gridReady)="onGridReady($event)"
   [columnDefs]="columnsgrid"
+  (rowClicked)='onRowClicked($event)'
 >
 </ag-grid-angular>

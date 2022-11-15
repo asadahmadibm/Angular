@@ -17,3 +17,8 @@
     background-color: #f5f5f6;
     border-radius: 6px;
 }
+
+::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button{
+    transform: translate(0px, 7px) !important;
+
+}

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { ColDef } from "ag-grid-community";
+import { ColDef, SelectionChangedEvent } from "ag-grid-community";
 
 @Component({
   selector: "app-admin-grid",
@@ -9,21 +9,23 @@ import { ColDef } from "ag-grid-community";
 export class AdminGridComponent implements OnInit {
   @Input() datagrid: any;
   @Input() columnsgrid: any;
-  @Input() heightGrid :any
-  @Output() refreshdata =new EventEmitter<any>()
- 
+  @Input() heightGrid: any;
+  @Output() refreshdata = new EventEmitter<any>();
+  @Output() selectedRow=new EventEmitter<any>();
+
   public gridApi: any;
 
   onGridReady(params: any) {
     params.api.sizeColumnsToFit();
     this.gridApi = params.api;
     this.refreshdata.emit(this.gridApi);
-
   }
-  
+
   constructor() {}
 
   ngOnInit(): void {}
 
-
+  onRowClicked(event: any) {
+    this.selectedRow.emit(event);
+  }
 }
