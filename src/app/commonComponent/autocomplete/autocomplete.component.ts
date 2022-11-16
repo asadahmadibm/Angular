@@ -8,9 +8,11 @@ import { map, Observable, startWith } from 'rxjs';
   styleUrls: ['./autocomplete.component.css']
 })
 export class AutocompleteComponent implements OnInit {
+
   @Output() data =new EventEmitter<any>();
   @Input() value:string='';
- form!:any;
+  @Input()  id!:number
+   myControl = new FormControl('');
  
   options: string[] = ["1399", "1400", "1401"];
   filteredOptions!: Observable<string[]>;
@@ -18,14 +20,11 @@ export class AutocompleteComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.form = this.formBuilder.group({
-      Year: new FormControl(this.value, Validators.required),
-    });
-
-    this.filteredOptions = this.form.valueChanges.pipe(
+    this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(""),
       map((value) => this._filter(value || ""))
     );
+
   }
 
   private _filter(value: any): string[] {
@@ -36,14 +35,20 @@ export class AutocompleteComponent implements OnInit {
     );
   }
 
-  chnagevalue()
+  chnagevalue(id:number)
   {
-    this.data.emit(this.form.get('Year').value)
+    let generalvar=[]
+    generalvar.push(this.myControl.value)
+    generalvar.push(id)
+    this.data.emit(generalvar)
   }
 
-  chnagevalue1(value:any)
+  chnagevalue1(value:any,id:number)
   {
-     this.data.emit(value)
+    let generalvar=[]
+    generalvar.push(value)
+    generalvar.push(id)
+     this.data.emit(generalvar)
   }
 
 }

@@ -3,6 +3,7 @@ export interface industryModel {
   IndustryName : string,
   Month:string,
   Year:string,
+  Year1:string,
   // Group:string,
   GroupNew:string[],
   BeginDate:string

@@ -10,8 +10,8 @@
           </div>
         </div>
         <div style="height: 80vh;">
-          <app-admin-grid (selectedRow)="selectedRow($event)" (refreshdata)="refresh($event)" heightGrid="100%" [datagrid]="rowData"
-            [columnsgrid]="columnDefs">
+          <app-admin-grid (selectedRow)="selectedRow($event)" (refreshdata)="refresh($event)" heightGrid="100%"
+            [datagrid]="rowData" [columnsgrid]="columnDefs">
           </app-admin-grid>
         </div>
       </div>
@@ -24,7 +24,7 @@
             <p>جزییات </p>
           </div>
           <div>
-            <button class="btn btn-primary btn-sm mx-1"   type="submit" (click)="onSubmit()">تایید</button>
+            <button class="btn btn-primary btn-sm mx-1" type="submit" (click)="onSubmit()">تایید</button>
             <button mat-raised-button m color="primary" class="m-1">انصراف</button>
           </div>
         </div>
@@ -43,8 +43,14 @@
           </mat-select>
         </mat-form-field>
 
+        <div>
+          <app-autocomplete *ngFor="let item of autocompletedata; let i= index" (data)="getdatacompelete($event)"
+            [value]="item" [id]="i"></app-autocomplete>
+        </div>
 
-    <app-autocomplete (data)="getdatacompelete($event)" [value]="autocompelete"></app-autocomplete>
+        <app-autocomplete></app-autocomplete>
+
+        <!-- <app-autocomplete (data)="getdatacompelete($event)" [value]="autocompelete1" ></app-autocomplete> -->
         <!-- <mat-form-field appearance="outline" class="p-1">
           <mat-label>گروه</mat-label>
 
@@ -81,8 +87,9 @@
           <mat-label>تاریخ شروع</mat-label>
           <input matInput [min]="MinDate" [matDatepicker]="picker6" [value]="aDate" placeholder="تاریخ شروع"
             (dateInput)="onInput($event)" (dateChange)="onChange($event)">
-          <mat-datepicker-toggle matSuffix [for]="picker6" style="transform: translate(0px, 6px) !important;"></mat-datepicker-toggle>
-          <mat-datepicker #picker6 ></mat-datepicker>
+          <mat-datepicker-toggle matSuffix [for]="picker6" style="transform: translate(0px, 6px) !important;">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker6></mat-datepicker>
         </mat-form-field>
 
 

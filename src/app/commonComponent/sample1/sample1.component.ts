@@ -23,12 +23,11 @@ import { AdminGridComponent } from "../admin-grid/admin-grid.component";
   styleUrls: ["./sample1.component.css"],
 })
 export class Sample1Component implements OnInit {
-  autocompelete:string="";
   aDate: any;
   defaultSelect: any;
   MinDate: any = moment.from("1400-07-29", "fa");
   groupItem: string[] = ["گروه 1", "گروه 2", "گروه 3", "گروه 4"];
-
+  autocompletedata: any = ["", ""];
   matselectdata: any = [
     { id: "1", name: "فروردین" },
     { id: "2", name: "اردیبهشت" },
@@ -40,6 +39,7 @@ export class Sample1Component implements OnInit {
     { field: "IndustryName", headerName: "نام" },
     { field: "Month", headerName: "کد ماه" },
     { field: "Year", headerName: "سال" },
+    { field: "Year1", headerName: "سال" },
     // { field: "Group", headerName: "گروه انتخابی" },
     { field: "GroupNew", headerName: "گروه انتخابی" },
     { field: "BeginDate", headerName: "تاریخ " },
@@ -78,8 +78,11 @@ export class Sample1Component implements OnInit {
     this.form.setValue(value.data);
     // this.form.get("IndustryID").patchValue(value.data.IndustryID);
     // this.form.get("IndustryName").patchValue(value.data.IndustryName);
-    this.autocompelete=value.data.Year;
-        
+
+    this.autocompletedata = [];
+    this.autocompletedata.push(value.data.Year);
+    this.autocompletedata.push(value.data.Year1);
+
     this.defaultSelect = value.data.Month;
     this.form.get("Month").patchValue(this.defaultSelect);
     // this.form.get("Year").patchValue(value.data.Year);
@@ -121,6 +124,7 @@ export class Sample1Component implements OnInit {
       IndustryName: ["", Validators.required],
       Month: ["", Validators.required],
       Year: new FormControl("", Validators.required),
+      Year1: new FormControl("", Validators.required),
       // Group: new FormControl("", Validators.required),
       GroupNew: new FormControl("", Validators.required),
       BeginDate: new FormControl("", Validators.required),
@@ -154,6 +158,7 @@ export class Sample1Component implements OnInit {
         IndustryName: "string1",
         Month: "1",
         Year: "1355",
+        Year1: "1356",
         // Group: "1",
         GroupNew: ["گروه 1", "گروه 2"],
         BeginDate: "1358/01/01",
@@ -163,6 +168,7 @@ export class Sample1Component implements OnInit {
         IndustryName: "string2",
         Month: "2",
         Year: "1356",
+        Year1: "1356",
         // Group: "1,2",
         GroupNew: ["گروه 2", "گروه 3"],
         BeginDate: "1401/12/28",
@@ -172,6 +178,7 @@ export class Sample1Component implements OnInit {
         IndustryName: "string3",
         Month: "3",
         Year: "1357",
+        Year1: "1356",
         GroupNew: ["گروه 1"],
         // Group: "1",
         BeginDate: "1400/11/01",
@@ -213,7 +220,12 @@ export class Sample1Component implements OnInit {
   }
 
   getdatacompelete(value: any) {
-    this.form.get("Year").patchValue(value);
+    console.log("aaaaaaa", value);
+    if (value[1] == "0") {
+      this.form.get("Year").patchValue(value[0]);
+    } else if (value[1] == "1") {
+      this.form.get("Year1").patchValue(value[0]);
+    }
   }
   private removeFirst<T>(array: T[], toRemove: T): void {
     const index = array.indexOf(toRemove);
