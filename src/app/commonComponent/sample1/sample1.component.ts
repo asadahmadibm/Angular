@@ -23,17 +23,17 @@ import { AdminGridComponent } from "../admin-grid/admin-grid.component";
   styleUrls: ["./sample1.component.css"],
 })
 export class Sample1Component implements OnInit {
+  autocompelete:string="";
   aDate: any;
   defaultSelect: any;
   MinDate: any = moment.from("1400-07-29", "fa");
   groupItem: string[] = ["گروه 1", "گروه 2", "گروه 3", "گروه 4"];
-  options: string[] = ["1399", "1400", "1401"];
+
   matselectdata: any = [
     { id: "1", name: "فروردین" },
     { id: "2", name: "اردیبهشت" },
     { id: "3", name: "خرداد" },
   ];
-  filteredOptions!: Observable<string[]>;
 
   columnDefs: ColDef[] = [
     { field: "IndustryID", headerName: "کد" },
@@ -72,39 +72,30 @@ export class Sample1Component implements OnInit {
     this.initForm(); //set form controller and validations
     this.loginTest();
     this.getindustry();
-
-    this.filteredOptions = this.form.get("Year").valueChanges.pipe(
-      startWith(""),
-      map((value) => this._filter(value || ""))
-    );
-
   }
 
-
   selectedRow(value: any) {
-
     this.form.setValue(value.data);
     // this.form.get("IndustryID").patchValue(value.data.IndustryID);
     // this.form.get("IndustryName").patchValue(value.data.IndustryName);
+    this.autocompelete=value.data.Year;
+        
     this.defaultSelect = value.data.Month;
     this.form.get("Month").patchValue(this.defaultSelect);
     // this.form.get("Year").patchValue(value.data.Year);
-    this.aDate= moment.from(value.data.BeginDate, "fa");
+    this.aDate = moment.from(value.data.BeginDate, "fa");
     this.form.get("BeginDate").patchValue(value.data.BeginDate);
-    for(let item of this.fruits)
-    {
-      item.selected=false;
+    for (let item of this.fruits) {
+      item.selected = false;
     }
     console.log(value.data.GroupNew);
-    
+
     var array = value.data.GroupNew;
     this.arrayDynamic = [];
     for (let item of array) {
-      
-      const index=this.fruits.findIndex(i => i.name === item)
-      if(index>-1)
-      {
-        this.fruits[index].selected=true;
+      const index = this.fruits.findIndex((i) => i.name === item);
+      if (index > -1) {
+        this.fruits[index].selected = true;
         this.arrayDynamic.push(this.fruits[index].name);
       }
 
@@ -120,7 +111,6 @@ export class Sample1Component implements OnInit {
     }
     this.form.get("GroupNew").patchValue(this.arrayDynamic);
     console.log(this.form.value);
-    
   }
 
   initForm() {
@@ -152,7 +142,6 @@ export class Sample1Component implements OnInit {
       }
     }
     this.form.get("GroupNew").patchValue(this.arrayDynamic);
-    
   }
 
   getindustry() {
@@ -166,7 +155,7 @@ export class Sample1Component implements OnInit {
         Month: "1",
         Year: "1355",
         // Group: "1",
-        GroupNew: ["گروه 1","گروه 2"],
+        GroupNew: ["گروه 1", "گروه 2"],
         BeginDate: "1358/01/01",
       },
       {
@@ -175,7 +164,7 @@ export class Sample1Component implements OnInit {
         Month: "2",
         Year: "1356",
         // Group: "1,2",
-        GroupNew: ["گروه 2","گروه 3"],
+        GroupNew: ["گروه 2", "گروه 3"],
         BeginDate: "1401/12/28",
       },
       {
@@ -188,14 +177,6 @@ export class Sample1Component implements OnInit {
         BeginDate: "1400/11/01",
       },
     ];
-  }
-
-  private _filter(value: any): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
-    );
   }
 
   displayFn(user: User): string {
@@ -231,6 +212,9 @@ export class Sample1Component implements OnInit {
     formControl.setValue(chips); // To trigger change detection
   }
 
+  getdatacompelete(value: any) {
+    this.form.get("Year").patchValue(value);
+  }
   private removeFirst<T>(array: T[], toRemove: T): void {
     const index = array.indexOf(toRemove);
     if (index !== -1) {

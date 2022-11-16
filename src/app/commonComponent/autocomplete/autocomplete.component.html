@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+<mat-form-field appearance="outline" class="p-1">
+    <mat-label>سال</mat-label>
+    <input type="text" placeholder="سال انتخابی" aria-label="Number" (input)="chnagevalue()" matInput formControlName="Year"
+      [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (onSelectionChange)="chnagevalue1(option)">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
