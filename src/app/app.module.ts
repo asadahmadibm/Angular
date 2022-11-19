@@ -10,6 +10,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AgGridModule } from 'ag-grid-angular';
 import { ToastrModule } from 'ngx-toastr';
@@ -29,6 +30,9 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MaterialPersianDateAdapter, PERSIAN_DATE_FORMATS } from './shared/material.persian-date.adapter';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AutocompleteComponent } from './commonComponent/autocomplete/autocomplete.component';
+import { Sample2Component } from './modules/sample2/sample2.component';
+import { Sample2EntryComponent } from './modules/sample2/sample2-entry/sample2-entry.component';
+import { Sample2modalComponent } from './modules/sample2/sample2modal/sample2modal.component';
 
 
 @NgModule({
@@ -41,6 +45,10 @@ import { AutocompleteComponent } from './commonComponent/autocomplete/autocomple
     LogoutComponent,
     AccComponent,
     AutocompleteComponent,
+    Sample2Component,
+    Sample2EntryComponent,
+    Sample2modalComponent,
+    
 
   ],
   imports: [
@@ -56,6 +64,7 @@ import { AutocompleteComponent } from './commonComponent/autocomplete/autocomple
     MatDatepickerModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatDialogModule,
     AgGridModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

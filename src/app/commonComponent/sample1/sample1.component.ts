@@ -202,6 +202,8 @@ export class Sample1Component implements OnInit {
     //     this.getindustry();
     //     this.toastr.success("Hello world!", "Toastr fun!");
     //   });
+    
+    this.form.get('Month').patchValue(this.defaultSelect);
     console.log(this.form.value as industryModel);
     if (this.form.invalid) return;
 

@@ -43,12 +43,11 @@
           </mat-select>
         </mat-form-field>
 
-        <div>
-          <app-autocomplete *ngFor="let item of autocompletedata; let i= index" (data)="getdatacompelete($event)"
-            [value]="item" [id]="i"></app-autocomplete>
-        </div>
+        <!-- <div>
+          <app-autocomplete *ngFor="let item of autocompletedata;" ></app-autocomplete>
+        </div> -->
 
-        <app-autocomplete></app-autocomplete>
+        <app-autocomplete formControlName="Year"></app-autocomplete>
 
         <!-- <app-autocomplete (data)="getdatacompelete($event)" [value]="autocompelete1" ></app-autocomplete> -->
         <!-- <mat-form-field appearance="outline" class="p-1">

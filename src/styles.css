@@ -90,6 +90,8 @@ html{
   --iconsSizeInCollapsedMenu: 22;
 }
 
+
+
 .mat-toolbar, .mat-button , .mat-raised-button, .mat-menu-item, .mat-input-element, .mat-form-field, .mat-option, .mat-select,
 .mat-slide-toggle-content {
     font-family: var(--main-fa-font) !important;
@@ -209,6 +211,7 @@ dynamic-form .row>* {
 .mat-form-field-disabled .mat-form-field-outline{
   background-color: rgba(0,0,0,.05);
 }
+
 
 
 

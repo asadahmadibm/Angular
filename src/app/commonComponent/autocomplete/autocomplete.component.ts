@@ -1,30 +1,89 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnInit,
+  Output,
+} from "@angular/core";
+import {
+  ControlValueAccessor,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+  Validators,
+} from "@angular/forms";
+import { MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
+import { map, Observable, startWith } from "rxjs";
 
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: ['./autocomplete.component.css']
+  selector: "app-autocomplete",
+  templateUrl: "./autocomplete.component.html",
+  styleUrls: ["./autocomplete.component.css"],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => AutocompleteComponent),
+      multi: true,
+    },
+  ],
 })
-export class AutocompleteComponent implements OnInit {
+export class AutocompleteComponent implements ControlValueAccessor, OnInit {
+  @Output() onSelect = new EventEmitter<string>();
 
-  @Output() data =new EventEmitter<any>();
-  @Input() value:string='';
-  @Input()  id!:number
-   myControl = new FormControl('');
- 
-  options: string[] = ["1399", "1400", "1401"];
-  filteredOptions!: Observable<string[]>;
-  constructor(private formBuilder: FormBuilder,) { }
+  _onChange?: Function;
+  _onTouch?: Function;
+  // methods for updating formControl state for parent
+  onTouch() {
+    if (!this._onTouch) return;
+    this._onTouch(); // formControl will be marked as touched when blur occurs (when mat-autocomplete is closed)
+  }
+  onChange(value: MatAutocompleteSelectedEvent) {
+    // this.onSelect.emit(value.option.value)
+    if (!this._onChange) return;
+    this._onChange(value.option.value);
+  }
 
   ngOnInit(): void {
-
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.inputControl = new FormControl({ value: "", disabled: false });
+    this.filteredOptions = this.inputControl.valueChanges.pipe(
       startWith(""),
       map((value) => this._filter(value || ""))
     );
+  }
 
+  inputControl!: FormControl;
+
+  options: string[] = ["1399", "1400", "1401"];
+  filteredOptions!: Observable<string[]>;
+  constructor(private formBuilder: FormBuilder) {}
+
+  // methods from ControlValueAccessor interface
+  writeValue(value: any): void {
+    this.inputControl?.setValue(value);
+  }
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this._onTouch = fn;
+  }
+
+  onFocus() {
+    const value = this.inputControl.value;
+    const item = this.options.find((item) => item === value);
+    if (item) this.inputControl.patchValue(item);
+  }
+  chnagevalue(event: any) {
+    const value1 = event.target.value;
+    const item = this.options.find((item) => item === value1);
+    if (item) {
+      debugger
+      this.inputControl.patchValue(item);
+      
+    }
+    
   }
 
   private _filter(value: any): string[] {
@@ -34,21 +93,4 @@ export class AutocompleteComponent implements OnInit {
       option.toLowerCase().includes(filterValue)
     );
   }
-
-  chnagevalue(id:number)
-  {
-    let generalvar=[]
-    generalvar.push(this.myControl.value)
-    generalvar.push(id)
-    this.data.emit(generalvar)
-  }
-
-  chnagevalue1(value:any,id:number)
-  {
-    let generalvar=[]
-    generalvar.push(value)
-    generalvar.push(id)
-     this.data.emit(generalvar)
-  }
-
 }
