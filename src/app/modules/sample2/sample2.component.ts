@@ -77,6 +77,9 @@ export class Sample2Component implements OnInit {
 
   selectedRow(value: any) {
     this.rowData = value.data as industryModel;
+    console.log(this.rowData);
+    
+    //this.form.get("GroupNew").patchValue(value.data.GroupNew);
     //this.openDialog();
     
   }

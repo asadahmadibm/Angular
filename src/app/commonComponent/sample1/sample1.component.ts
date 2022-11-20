@@ -27,6 +27,7 @@ export class Sample1Component implements OnInit {
   defaultSelect: any;
   MinDate: any = moment.from("1400-07-29", "fa");
   groupItem: string[] = ["گروه 1", "گروه 2", "گروه 3", "گروه 4"];
+  options: string[] = ["1399", "1400", "1401"];
   autocompletedata: any = ["", ""];
   matselectdata: any = [
     { id: "1", name: "فروردین" },
@@ -56,7 +57,7 @@ export class Sample1Component implements OnInit {
     { name: "گروه 6", selected: false },
   ];
 
-  arrayDynamic: Fruit["name"][] = [];
+
   rowData: industryModel[] = [];
 
   form: any;
@@ -88,31 +89,7 @@ export class Sample1Component implements OnInit {
     // this.form.get("Year").patchValue(value.data.Year);
     this.aDate = moment.from(value.data.BeginDate, "fa");
     this.form.get("BeginDate").patchValue(value.data.BeginDate);
-    for (let item of this.fruits) {
-      item.selected = false;
-    }
-    console.log(value.data.GroupNew);
-
-    var array = value.data.GroupNew;
-    this.arrayDynamic = [];
-    for (let item of array) {
-      const index = this.fruits.findIndex((i) => i.name === item);
-      if (index > -1) {
-        this.fruits[index].selected = true;
-        this.arrayDynamic.push(this.fruits[index].name);
-      }
-
-      // let item1 = this.fruits.find(i => i.name === item);
-      // this.fruits.find((value:any, index:any) => {
-      //   if (index != 0) {
-      //    this.fruits[index].selected=true;
-      //    this.arrayDynamic.push(this.fruits[index].name);
-      //   }
-      // });
-
-      // item1!.selected=true;
-    }
-    this.form.get("GroupNew").patchValue(this.arrayDynamic);
+    this.form.get("GroupNew").patchValue(value.data.GroupNew);
     console.log(this.form.value);
   }
 
@@ -137,16 +114,7 @@ export class Sample1Component implements OnInit {
     });
   }
 
-  onSelectFruit(fruit: any) {
-    fruit.selected = !fruit.selected;
-    this.arrayDynamic = [];
-    for (let fruit of this.fruits) {
-      if (fruit.selected) {
-        this.arrayDynamic.push(fruit.name);
-      }
-    }
-    this.form.get("GroupNew").patchValue(this.arrayDynamic);
-  }
+
 
   getindustry() {
     // this.industryservice.getindustry2().subscribe((res) => {
@@ -236,12 +204,5 @@ export class Sample1Component implements OnInit {
     }
   }
 
-  onInput(event: MatDatepickerInputEvent<moment.Moment>) {
-    console.log("OnInput: ", event.value);
-  }
 
-  onChange(event: MatDatepickerInputEvent<moment.Moment>) {
-    const x = moment(event.value!).format("jYYYY/jMM/jDD");
-    this.form.get("BeginDate").patchValue(x);
-  }
 }

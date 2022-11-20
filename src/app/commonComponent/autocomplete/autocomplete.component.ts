@@ -31,6 +31,7 @@ import { map, Observable, startWith } from "rxjs";
 })
 export class AutocompleteComponent implements ControlValueAccessor, OnInit {
   @Output() onSelect = new EventEmitter<string>();
+  @Input() optionsData:string[]=[];
 
   _onChange?: Function;
   _onTouch?: Function;
@@ -55,7 +56,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
 
   inputControl!: FormControl;
 
-  options: string[] = ["1399", "1400", "1401"];
+
   filteredOptions!: Observable<string[]>;
   constructor(private formBuilder: FormBuilder) {}
 
@@ -72,12 +73,12 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
 
   onFocus() {
     const value = this.inputControl.value;
-    const item = this.options.find((item) => item === value);
+    const item = this.optionsData.find((item) => item === value);
     if (item) this.inputControl.patchValue(item);
   }
   chnagevalue(event: any) {
     const value1 = event.target.value;
-    const item = this.options.find((item) => item === value1);
+    const item = this.optionsData.find((item) => item === value1);
     if (item) {
       debugger
       this.inputControl.patchValue(item);
@@ -89,7 +90,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
   private _filter(value: any): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter((option) =>
+    return this.optionsData.filter((option) =>
       option.toLowerCase().includes(filterValue)
     );
   }

@@ -1,0 +1,10 @@
+<mat-form-field appearance="outline" >
+    <mat-label>گروه</mat-label>
+    <input [formControl]="inputControl" type="hidden">
+    <mat-chip-list #chipList multiple="true">
+      <mat-chip *ngFor="let fruit of items" [value]="fruit.name" [selected]="fruit.selected"
+        (click)="onSelectFruit(fruit)">
+        {{fruit.name}}
+      </mat-chip>
+    </mat-chip-list>
+  </mat-form-field>

@@ -23,17 +23,12 @@
           <mat-option *ngFor="let data of matselectdata" [value]="data.id">{{data.name}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <app-autocomplete formControlName="Year"></app-autocomplete>
+      
+      <app-autocomplete [optionsData]="options" formControlName="Year"></app-autocomplete>
 
-      <mat-form-field appearance="outline" class="p-1">
-        <mat-label>گروه</mat-label>
-        <mat-chip-list #chipList multiple="true">
-          <mat-chip *ngFor="let fruit of fruits" [value]="fruit.name" [selected]="fruit.selected"
-            (click)="onSelectFruit(fruit)">
-            {{fruit.name}}
-          </mat-chip>
-        </mat-chip-list>
-      </mat-form-field>
+      <app-chips [items]="fruits" formControlName="GroupNew"></app-chips>
+
+
 
       <mat-form-field appearance="outline" class="p-1">
         <mat-label>تاریخ شروع</mat-label>

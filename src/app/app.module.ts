@@ -33,6 +33,8 @@ import { AutocompleteComponent } from './commonComponent/autocomplete/autocomple
 import { Sample2Component } from './modules/sample2/sample2.component';
 import { Sample2EntryComponent } from './modules/sample2/sample2-entry/sample2-entry.component';
 import { Sample2modalComponent } from './modules/sample2/sample2modal/sample2modal.component';
+import { ChipsComponent } from './commonComponent/chips/chips.component';
+import { DatePickerComponent } from './commonComponent/date-picker/date-picker.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { Sample2modalComponent } from './modules/sample2/sample2modal/sample2mod
     Sample2Component,
     Sample2EntryComponent,
     Sample2modalComponent,
+    ChipsComponent,
+    DatePickerComponent,
     
 
   ],

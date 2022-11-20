@@ -36,6 +36,7 @@
           <mat-label>نام </mat-label>
           <input matInput type="text" formControlName="IndustryName">
         </mat-form-field>
+
         <mat-form-field appearance="outline" class="p-1">
           <mat-label>ماه</mat-label>
           <mat-select [(value)]="defaultSelect">
@@ -47,7 +48,7 @@
           <app-autocomplete *ngFor="let item of autocompletedata;" ></app-autocomplete>
         </div> -->
 
-        <app-autocomplete formControlName="Year"></app-autocomplete>
+        <app-autocomplete [optionsData]="options" formControlName="Year" class="p-1"></app-autocomplete>
 
         <!-- <app-autocomplete (data)="getdatacompelete($event)" [value]="autocompelete1" ></app-autocomplete> -->
         <!-- <mat-form-field appearance="outline" class="p-1">
@@ -72,24 +73,9 @@
           </mat-select>
         </mat-form-field> -->
 
-        <mat-form-field appearance="outline" class="p-1">
-          <mat-label>گروه</mat-label>
-          <mat-chip-list #chipList multiple="true">
-            <mat-chip *ngFor="let fruit of fruits" [value]="fruit.name" [selected]="fruit.selected"
-              (click)="onSelectFruit(fruit)">
-              {{fruit.name}}
-            </mat-chip>
-          </mat-chip-list>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline" class="p-1">
-          <mat-label>تاریخ شروع</mat-label>
-          <input matInput [min]="MinDate" [matDatepicker]="picker6" [value]="aDate" placeholder="تاریخ شروع"
-            (dateInput)="onInput($event)" (dateChange)="onChange($event)">
-          <mat-datepicker-toggle matSuffix [for]="picker6" style="transform: translate(0px, 6px) !important;">
-          </mat-datepicker-toggle>
-          <mat-datepicker #picker6></mat-datepicker>
-        </mat-form-field>
+        <app-chips [items]="fruits" formControlName="GroupNew" class="p-1"></app-chips>
+        
+        <app-date-picker formControlName="BeginDate"></app-date-picker>
 
 
 

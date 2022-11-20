@@ -1,8 +1,9 @@
 <form >
-<mat-form-field appearance="outline" class="p-1">
+<mat-form-field appearance="outline" >
     <mat-label>سال</mat-label>
     <input type="text" placeholder="سال انتخابی" aria-label="Number" 
-     matInput  [formControl]="inputControl"
+     matInput  
+     [formControl]="inputControl"
       [matAutocomplete]="auto"
       (focus)="onFocus()"
       (input)="chnagevalue($event)" 

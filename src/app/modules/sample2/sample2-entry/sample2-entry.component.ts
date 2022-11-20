@@ -16,6 +16,7 @@ export class Sample2EntryComponent implements OnInit {
   form: any;
   defaultSelect: any;
   aDate: any;
+  options: string[] = ["1399", "1400", "1401"];
   MinDate: any = moment.from("1400-07-29", "fa");
   matselectdata: any = [
     { id: "1", name: "فروردین" },
@@ -77,20 +78,7 @@ export class Sample2EntryComponent implements OnInit {
     this.aDate = moment.from(data.BeginDate, "fa");
     this.form.get("BeginDate").patchValue(this.aDate);
 
-    for (let item of this.fruits) {
-      item.selected = false;
-    }
-
-    var array = data.GroupNew;
-    this.arrayDynamic = [];
-    for (let item of array) {
-      const index = this.fruits.findIndex((i) => i.name === item);
-      if (index > -1) {
-        this.fruits[index].selected = true;
-        this.arrayDynamic.push(this.fruits[index].name);
-      }
-    }
-    this.form.get("GroupNew").patchValue(this.arrayDynamic);
+    this.form.get("GroupNew").patchValue(data.GroupNew);
     console.log("after refreshForm",this.form.value);
   }
 
@@ -100,16 +88,7 @@ export class Sample2EntryComponent implements OnInit {
     this.refreshForm(changes["formdata"].currentValue as industryModel);
   }
 
-  onSelectFruit(fruit: any) {
-    fruit.selected = !fruit.selected;
-    this.arrayDynamic = [];
-    for (let fruit of this.fruits) {
-      if (fruit.selected) {
-        this.arrayDynamic.push(fruit.name);
-      }
-    }
-    this.form.get("GroupNew").patchValue(this.arrayDynamic);
-  }
+
   onInput(event: MatDatepickerInputEvent<moment.Moment>) {
     console.log("OnInput: ", event.value);
   }
