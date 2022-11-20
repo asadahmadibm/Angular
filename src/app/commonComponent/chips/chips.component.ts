@@ -9,6 +9,7 @@ import {
   ControlValueAccessor,
   FormControl,
   NG_VALUE_ACCESSOR,
+  Validators,
 } from "@angular/forms";
 import { Fruit } from "src/app/models/industry.model";
 
@@ -61,7 +62,7 @@ export class ChipsComponent implements ControlValueAccessor, OnInit {
   onChange() {}
 
   ngOnInit(): void {
-    this.inputControl = new FormControl({ value: "", disabled: false });
+    this.inputControl = new FormControl("", Validators.required);
     this.arrayDynamic = [];
     for (let item of this.items) {
       item.selected = false;

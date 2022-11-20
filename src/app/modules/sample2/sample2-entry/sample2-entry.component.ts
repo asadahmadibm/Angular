@@ -32,7 +32,13 @@ export class Sample2EntryComponent implements OnInit {
     { name: "گروه 6", selected: false },
   ];
   arrayDynamic: Fruit["name"][] = [];
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    public dialogRef: MatDialogRef<Sample2EntryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: industryModel
+  ) {
+    this.formdata = data;
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -47,25 +53,22 @@ export class Sample2EntryComponent implements OnInit {
     });
 
     // console.log(this.formdata);
-      this.refreshForm(this.formdata);
+    this.refreshForm(this.formdata);
   }
   onSubmit() {
-    this.form.get('Month').patchValue(this.defaultSelect);
+    this.form.get("Month").patchValue(this.defaultSelect);
     console.log(this.form.value as industryModel);
   }
   getdatacompelete(value: any) {
-     console.log("aaaaaaa", value);
+    console.log("aaaaaaa", value);
     this.form.get("Year").patchValue(value);
     // console.log(this.form.get("Year").value);
-    
   }
 
-
   refreshForm(data: industryModel) {
-
     // console.log("refreshForm",data);
-    
-    if(data===undefined || this.form===undefined) return;
+
+    if (data === undefined || this.form === undefined) return;
 
     this.form.setValue(data);
 
@@ -79,22 +82,15 @@ export class Sample2EntryComponent implements OnInit {
     this.form.get("BeginDate").patchValue(this.aDate);
 
     this.form.get("GroupNew").patchValue(data.GroupNew);
-    console.log("after refreshForm",this.form.value);
+    console.log("after refreshForm", this.form.value);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-   console.log(changes["formdata"].currentValue as industryModel);
-   
+    console.log(changes["formdata"].currentValue as industryModel);
     this.refreshForm(changes["formdata"].currentValue as industryModel);
   }
 
-
-  onInput(event: MatDatepickerInputEvent<moment.Moment>) {
-    console.log("OnInput: ", event.value);
-  }
-
-  onChange(event: MatDatepickerInputEvent<moment.Moment>) {
-    const x = moment(event.value!).format("jYYYY/jMM/jDD");
-    this.form.get("BeginDate").patchValue(x);
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

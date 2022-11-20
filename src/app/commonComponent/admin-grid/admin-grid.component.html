@@ -1,7 +1,7 @@
 <ag-grid-angular
   [ngStyle]="{'height': heightGrid}"
   style="margin: 2px;"
-  class="ag-theme-alpine"
+  class="ag-theme-alpine m-0"
   [rowData]="datagrid"
   [enableRtl]="true"
   [rowHeight]="30"
@@ -9,5 +9,6 @@
   (gridReady)="onGridReady($event)"
   [columnDefs]="columnsgrid"
   (rowClicked)='onRowClicked($event)'
+  rowSelection='single'
 >
 </ag-grid-angular>

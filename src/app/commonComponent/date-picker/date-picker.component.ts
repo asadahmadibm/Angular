@@ -1,4 +1,11 @@
-import { Component, forwardRef, Input, OnInit } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import {
   ControlValueAccessor,
   FormControl,
@@ -11,6 +18,7 @@ import * as moment from "jalali-moment";
   selector: "app-date-picker",
   templateUrl: "./date-picker.component.html",
   styleUrls: ["./date-picker.component.css"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -29,6 +37,16 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit(): void {
     this.inputControl = new FormControl({ value: "", disabled: false });
+  }
+  ngAfterContentInit () {
+    console.log(this.inputControl.value);
+    if (this.inputControl.value) {
+      const x = moment(this.inputControl.value).format("jYYYY/jMM/jDD");
+      const aDate = moment.from(x, "fa");
+      this.inputControl.patchValue(aDate);
+      if (!this._onChange) return;
+      this._onChange(x);
+    }
   }
 
   onTouch() {

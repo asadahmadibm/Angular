@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Sample2modalComponent } from './sample2modal.component';
+import { Group1Component } from './group1.component';
 
-describe('Sample2modalComponent', () => {
-  let component: Sample2modalComponent;
-  let fixture: ComponentFixture<Sample2modalComponent>;
+describe('Group1Component', () => {
+  let component: Group1Component;
+  let fixture: ComponentFixture<Group1Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Sample2modalComponent ]
+      declarations: [ Group1Component ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Sample2modalComponent);
+    fixture = TestBed.createComponent(Group1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

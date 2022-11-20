@@ -1,14 +1,17 @@
-<div class="card ">
-  <div class="card-header d-flex justify-content-between">
-    <div class="p-1">جزییات</div>
-    <div>
-      <button class="btn btn-primary btn-sm mx-1" type="submit" (click)="onSubmit()">تایید</button>
-      <!-- <button mat-raised-button m color="primary" class="m-1">انصراف</button> -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="card ">
+    <div class="card-header d-flex justify-content-between">
+      <div class="p-1">جزییات</div>
+      <div>
+        <button class="btn btn-primary btn-sm mx-1" type="submit" [mat-dialog-close]="form.value" cdkFocusInitial
+          (click)="onSubmit()">تایید</button>
+        <!-- <button mat-raised-button m color="primary" class="m-1">انصراف</button> -->
+        <button mat-button (click)="onNoClick()">انصراف</button>
+      </div>
     </div>
-  </div>
 
-  <div class="p-1">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="p-1">
+
       <mat-form-field appearance="outline" class="p-1">
         <mat-label>کد </mat-label>
         <input matInput type="number" formControlName="IndustryID">
@@ -23,21 +26,14 @@
           <mat-option *ngFor="let data of matselectdata" [value]="data.id">{{data.name}}</mat-option>
         </mat-select>
       </mat-form-field>
-      
+
       <app-autocomplete [optionsData]="options" formControlName="Year"></app-autocomplete>
-
+      <app-autocomplete [optionsData]="options" formControlName="Year1"></app-autocomplete>
       <app-chips [items]="fruits" formControlName="GroupNew"></app-chips>
+      <app-date-picker formControlName="BeginDate"></app-date-picker>
 
 
 
-      <mat-form-field appearance="outline" class="p-1">
-        <mat-label>تاریخ شروع</mat-label>
-        <input matInput [min]="MinDate" [matDatepicker]="picker6" [value]="aDate" placeholder="تاریخ شروع"
-          (dateInput)="onInput($event)" (dateChange)="onChange($event)">
-        <mat-datepicker-toggle matSuffix [for]="picker6" style="transform: translate(0px, 6px) !important;">
-        </mat-datepicker-toggle>
-        <mat-datepicker #picker6></mat-datepicker>
-      </mat-form-field>
-    </form>
+    </div>
   </div>
-</div>
+</form>

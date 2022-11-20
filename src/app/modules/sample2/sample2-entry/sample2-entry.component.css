@@ -1,24 +1,46 @@
-.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
-.input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
+.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3),
+.input-group:not(.has-validation)
+  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .input-group-text {
-    border-top-left-radius: 0px !important;
-    border-bottom-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }
 
 .mat-standard-chip .mat-chip-remove.btn-close {
-    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  background: transparent
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
+    center/1em auto no-repeat;
 }
 
 .backgroundFieldRedonly {
-    background-color: #f5f5f6;
-    border-radius: 6px;
+  background-color: #f5f5f6;
+  border-radius: 6px;
 }
 
-::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button{
-    transform: translate(0px, 7px) !important;
+::ng-deep
+  .mat-form-field:not(.mat-form-field-appearance-legacy)
+  .mat-form-field-suffix
+  .mat-icon-button {
+  transform: translate(0px, 7px) !important;
+}
 
+::ng-deep .mat-dialog-container {
+  padding: 0px;
+}
+
+::ng-deep .cdk-overlay-connected-position-bounding-box {
+  z-index: 10000 !important;
+}
+
+::ng-deep .cdk-global-overlay-wrapper {
+  z-index: 1000 !important;
+}
+
+::ng-deep .cdk-overlay-container,
+.cdk-overlay-pane {
+  z-index: 9999 !important;
 }

@@ -47,7 +47,7 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit(): void {
-    this.inputControl = new FormControl({ value: "", disabled: false });
+    this.inputControl = new FormControl( "", Validators.required);
     this.filteredOptions = this.inputControl.valueChanges.pipe(
       startWith(""),
       map((value) => this._filter(value || ""))

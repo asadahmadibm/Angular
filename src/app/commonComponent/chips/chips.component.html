@@ -1,7 +1,7 @@
-<mat-form-field appearance="outline" >
+<mat-form-field appearance="outline" class="p-1">
     <mat-label>گروه</mat-label>
-    <input [formControl]="inputControl" type="hidden">
-    <mat-chip-list #chipList multiple="true">
+    <!-- <input [formControl]="inputControl" type="hidden" > -->
+    <mat-chip-list #chipList multiple="true" required [formControl]="inputControl" >
       <mat-chip *ngFor="let fruit of items" [value]="fruit.name" [selected]="fruit.selected"
         (click)="onSelectFruit(fruit)">
         {{fruit.name}}
