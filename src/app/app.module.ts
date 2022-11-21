@@ -11,7 +11,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatTabsModule} from '@angular/material/tabs';
 import { AgGridModule } from 'ag-grid-angular';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +35,7 @@ import { Sample2EntryComponent } from './modules/sample2/sample2-entry/sample2-e
 import { ChipsComponent } from './commonComponent/chips/chips.component';
 import { DatePickerComponent } from './commonComponent/date-picker/date-picker.component';
 import { Group1Component } from './modules/sample2/group1/group1.component';
+import { DropdownComponent } from './commonComponent/dropdown/dropdown.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { Group1Component } from './modules/sample2/group1/group1.component';
     ChipsComponent,
     DatePickerComponent,
     Group1Component,
+    DropdownComponent,
     
 
   ],
@@ -63,6 +65,7 @@ import { Group1Component } from './modules/sample2/group1/group1.component';
     MatIconModule,
     AkbariDatePickerModule,
     MatInputModule,
+    MatTabsModule,
     MatMenuModule,
     MatChipsModule,
     MatDatepickerModule,

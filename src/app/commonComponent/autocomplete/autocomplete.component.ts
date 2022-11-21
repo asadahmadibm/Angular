@@ -31,8 +31,10 @@ import { map, Observable, startWith } from "rxjs";
 })
 export class AutocompleteComponent implements ControlValueAccessor, OnInit {
   @Output() onSelect = new EventEmitter<string>();
-  @Input() optionsData:string[]=[];
-
+  @Input() optionsData: string[] = [];
+  @Input() require: boolean = false;
+  inputControl!: FormControl;
+  filteredOptions!: Observable<string[]>;
   _onChange?: Function;
   _onTouch?: Function;
   // methods for updating formControl state for parent
@@ -47,17 +49,16 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit(): void {
-    this.inputControl = new FormControl( "", Validators.required);
+    this.inputControl = new FormControl(
+      "",
+      this.require == true ? Validators.required : null
+    );
     this.filteredOptions = this.inputControl.valueChanges.pipe(
       startWith(""),
       map((value) => this._filter(value || ""))
     );
   }
 
-  inputControl!: FormControl;
-
-
-  filteredOptions!: Observable<string[]>;
   constructor(private formBuilder: FormBuilder) {}
 
   // methods from ControlValueAccessor interface
@@ -79,12 +80,17 @@ export class AutocompleteComponent implements ControlValueAccessor, OnInit {
   chnagevalue(event: any) {
     const value1 = event.target.value;
     const item = this.optionsData.find((item) => item === value1);
+    //debugger
     if (item) {
-      debugger
       this.inputControl.patchValue(item);
-      
+    } else {
+      if (value1 == "") {
+        // this.inputControl.patchValue(null);
+        this.inputControl.reset();
+        // this.inputControl.setValidators[Validators.required]
+        console.log(this.inputControl.value);
+      }
     }
-    
   }
 
   private _filter(value: any): string[] {

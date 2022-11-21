@@ -22,7 +22,7 @@ export class Group1Component implements OnInit {
     { field: "Year1", headerName: "سال" },
     // { field: "Group", headerName: "گروه انتخابی" },
     { field: "GroupNew", headerName: "گروه انتخابی" },
-    { field: "BeginDate", headerName: "تاریخ " },
+    // { field: "BeginDate", headerName: "تاریخ " },
   ];
   rowsData: industryModel[] = [];
   constructor( public dialog: MatDialog,
@@ -61,12 +61,11 @@ export class Group1Component implements OnInit {
     console.log(index);
   }
   openDialog(data: any): void {
-    console.log(data);
     
-    const dialogRef = this.dialog.open(Sample2EntryComponent, {
-      // width: '100%',
-      data: data,
-    });
+    
+    const dialogRef = this.dialog.open(Sample2EntryComponent);
+    dialogRef.componentInstance.formdata = data;
+    console.log("ddddddddd",data);
 
     dialogRef.afterClosed().subscribe((result: industryModel) => {
       const index = this.rowsData.findIndex(

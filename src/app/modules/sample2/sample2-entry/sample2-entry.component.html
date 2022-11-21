@@ -3,7 +3,7 @@
     <div class="card-header d-flex justify-content-between">
       <div class="p-1">جزییات</div>
       <div>
-        <button class="btn btn-primary btn-sm mx-1" type="submit" [mat-dialog-close]="form.value" cdkFocusInitial
+        <button [disabled]="!form.valid" class="btn btn-primary btn-sm mx-1" type="submit" [mat-dialog-close]="form.value" cdkFocusInitial
           (click)="onSubmit()">تایید</button>
         <!-- <button mat-raised-button m color="primary" class="m-1">انصراف</button> -->
         <button mat-button (click)="onNoClick()">انصراف</button>
@@ -20,17 +20,13 @@
         <mat-label>نام </mat-label>
         <input matInput type="text" formControlName="IndustryName">
       </mat-form-field>
-      <mat-form-field appearance="outline" class="p-1">
-        <mat-label>ماه</mat-label>
-        <mat-select [(value)]="defaultSelect">
-          <mat-option *ngFor="let data of matselectdata" [value]="data.id">{{data.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      
+      <app-dropdown [matselectdata]="matselectdata" formControlName="Month"></app-dropdown>
 
-      <app-autocomplete [optionsData]="options" formControlName="Year"></app-autocomplete>
-      <app-autocomplete [optionsData]="options" formControlName="Year1"></app-autocomplete>
-      <app-chips [items]="fruits" formControlName="GroupNew"></app-chips>
-      <app-date-picker formControlName="BeginDate"></app-date-picker>
+      <app-autocomplete [require]="true" [optionsData]="options" formControlName="Year"></app-autocomplete>
+      <app-autocomplete [require]="true" [optionsData]="options" formControlName="Year1"></app-autocomplete>
+      <app-chips [require]="true" [items]="fruits" formControlName="GroupNew"></app-chips>
+      <app-date-picker [require]="true" formControlName="BeginDate"></app-date-picker>
 
 
 

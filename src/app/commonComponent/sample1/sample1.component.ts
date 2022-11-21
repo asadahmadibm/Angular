@@ -99,7 +99,7 @@ export class Sample1Component implements OnInit {
     this.form = this.formBuilder.group({
       IndustryID: ["", Validators.required],
       IndustryName: ["", Validators.required],
-      Month: ["", Validators.required],
+      Month: [""],
       Year: new FormControl("", Validators.required),
       Year1: new FormControl("", Validators.required),
       // Group: new FormControl("", Validators.required),

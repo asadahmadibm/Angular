@@ -37,19 +37,15 @@
           <input matInput type="text" formControlName="IndustryName">
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="p-1">
-          <mat-label>ماه</mat-label>
-          <mat-select [(value)]="defaultSelect" required formControlName="Month">
-            <mat-option *ngFor="let data of matselectdata" [value]="data.id">{{data.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <app-dropdown [require]="true"  [matselectdata]="matselectdata" formControlName="Month"></app-dropdown>
+          
 
         <!-- <div>
           <app-autocomplete *ngFor="let item of autocompletedata;" ></app-autocomplete>
         </div> -->
 
-        <app-autocomplete [optionsData]="options" formControlName="Year" ></app-autocomplete>
-        <app-autocomplete [optionsData]="options" formControlName="Year1" ></app-autocomplete>
+        <app-autocomplete [require]="true"  [optionsData]="options" formControlName="Year" ></app-autocomplete>
+        <app-autocomplete  [require]="true" [optionsData]="options" formControlName="Year1" ></app-autocomplete>
 
         <!-- <app-autocomplete (data)="getdatacompelete($event)" [value]="autocompelete1" ></app-autocomplete> -->
         <!-- <mat-form-field appearance="outline" class="p-1">
@@ -76,7 +72,7 @@
 
         <app-chips [items]="fruits" formControlName="GroupNew" ></app-chips>
         
-        <app-date-picker formControlName="BeginDate"></app-date-picker>
+        <app-date-picker [require]="true" formControlName="BeginDate"></app-date-picker>
 
 
 

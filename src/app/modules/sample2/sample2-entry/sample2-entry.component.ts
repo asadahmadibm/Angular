@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, SimpleChanges } from "@angular/core";
+import { Component, Inject, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
@@ -10,11 +10,11 @@ import { Fruit, industryModel } from "src/app/models/industry.model";
   templateUrl: "./sample2-entry.component.html",
   styleUrls: ["./sample2-entry.component.css"],
 })
-export class Sample2EntryComponent implements OnInit {
+export class Sample2EntryComponent implements OnInit, OnChanges {
   @Input() formdata!: industryModel;
   autocompletedata: any = "";
   form: any;
-  defaultSelect: any;
+ 
   aDate: any;
   options: string[] = ["1399", "1400", "1401"];
   MinDate: any = moment.from("1400-07-29", "fa");
@@ -23,6 +23,7 @@ export class Sample2EntryComponent implements OnInit {
     { id: "2", name: "اردیبهشت" },
     { id: "3", name: "خرداد" },
   ];
+  
   fruits: Fruit[] = [
     { name: "گروه 1", selected: false },
     { name: "گروه 2", selected: false },
@@ -33,18 +34,24 @@ export class Sample2EntryComponent implements OnInit {
   ];
   arrayDynamic: Fruit["name"][] = [];
   constructor(
-    private fb: FormBuilder,
+    private fb: FormBuilder ,
     public dialogRef: MatDialogRef<Sample2EntryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: industryModel
   ) {
     this.formdata = data;
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if(changes["formdata"] && changes["formdata"].currentValue){
+      this.refreshForm(changes["formdata"].currentValue as industryModel);
+    }
+  }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       IndustryID: ["", Validators.required],
       IndustryName: ["", Validators.required],
-      Month: ["", Validators.required],
+      Month: new FormControl("",Validators.required),
       Year: new FormControl("", Validators.required),
       Year1: new FormControl("", Validators.required),
       // Group: new FormControl("", Validators.required),
@@ -56,13 +63,7 @@ export class Sample2EntryComponent implements OnInit {
     this.refreshForm(this.formdata);
   }
   onSubmit() {
-    this.form.get("Month").patchValue(this.defaultSelect);
     console.log(this.form.value as industryModel);
-  }
-  getdatacompelete(value: any) {
-    console.log("aaaaaaa", value);
-    this.form.get("Year").patchValue(value);
-    // console.log(this.form.get("Year").value);
   }
 
   refreshForm(data: industryModel) {
@@ -75,20 +76,15 @@ export class Sample2EntryComponent implements OnInit {
     this.form.get("Year").patchValue(data.Year);
     this.autocompletedata = data.Year;
 
-    this.defaultSelect = data.Month;
-    this.form.get("Month").patchValue(this.defaultSelect);
+    this.form.get("Month").patchValue(data.Month);
 
     this.aDate = moment.from(data.BeginDate, "fa");
     this.form.get("BeginDate").patchValue(this.aDate);
 
     this.form.get("GroupNew").patchValue(data.GroupNew);
-    console.log("after refreshForm", this.form.value);
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes["formdata"].currentValue as industryModel);
-    this.refreshForm(changes["formdata"].currentValue as industryModel);
-  }
+
 
   onNoClick(): void {
     this.dialogRef.close();

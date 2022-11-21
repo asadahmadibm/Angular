@@ -29,6 +29,7 @@ export class ChipsComponent implements ControlValueAccessor, OnInit {
   @Input() items: Fruit[] = [];
   @Input() selecteditems: string[] = [];
   inputControl!: FormControl;
+  @Input() require:boolean=false;
   arrayDynamic: Fruit["name"][] = [];
   constructor() {}
   _onChange?: Function;
@@ -62,7 +63,7 @@ export class ChipsComponent implements ControlValueAccessor, OnInit {
   onChange() {}
 
   ngOnInit(): void {
-    this.inputControl = new FormControl("", Validators.required);
+    this.inputControl = new FormControl("", this.require==true ? Validators.required : null);
     this.arrayDynamic = [];
     for (let item of this.items) {
       item.selected = false;

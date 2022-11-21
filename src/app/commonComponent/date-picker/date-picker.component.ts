@@ -10,6 +10,7 @@ import {
   ControlValueAccessor,
   FormControl,
   NG_VALUE_ACCESSOR,
+  Validators,
 } from "@angular/forms";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 import * as moment from "jalali-moment";
@@ -29,14 +30,14 @@ import * as moment from "jalali-moment";
 })
 export class DatePickerComponent implements ControlValueAccessor, OnInit {
   @Input() MinDate: any = moment.from("1355-05-21", "fa");
-
+  @Input() require:boolean=false;
   inputControl!: FormControl;
   _onChange?: Function;
   _onTouch?: Function;
   constructor() {}
 
   ngOnInit(): void {
-    this.inputControl = new FormControl({ value: "", disabled: false });
+    this.inputControl = new FormControl("",this.require==true ? Validators.required : null);
   }
   ngAfterContentInit () {
     console.log(this.inputControl.value);

@@ -1,14 +1,57 @@
-<div class="d-flex  justify-content-center  ">
-    <div class="col-8 p-2">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <p>مثال 2</p>
+<form [formGroup]="formmaster" (ngSubmit)="onsubmit()">
+    <div class="d-flex  justify-content-center  ">
+        <div class="col-8 p-2">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <p>مثال 2</p>
+                    <div>
+                        <button type="submit" class="btn btn-sm btn-primary">ثبت</button>
+                    </div>
+                </div>
+                <div class="row p-1 d-flex flex-row">
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="p-1">
+                            <mat-label>کد </mat-label>
+                            <input matInput type="number" formControlName="id">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field appearance="outline" class="p-1">
+                            <mat-label>نام </mat-label>
+                            <input matInput type="text" formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <app-autocomplete [require]="false" [optionsData]="options" formControlName="sal"></app-autocomplete>
+                    </div>
+                    <div class="col-6">
+                        <app-autocomplete [require]="false" [optionsData]="options" formControlName="sal2"></app-autocomplete>
+                    </div>
+                    <div class="col-6">
+                        <app-chips [require]="false" [items]="fruits" formControlName="gn"></app-chips>
+                    </div>
+                    <div class="col-6">
+                        <app-date-picker [require]="true" formControlName="date1"></app-date-picker>
+                    </div>
+
+
+
+                </div>
+                <mat-tab-group animationDuration="0ms">
+                    <mat-tab label="گروه اول">
+                        <app-group1></app-group1>
+                    </mat-tab>
+                    <mat-tab label="گروه دوم">
+                        <app-group1></app-group1>
+                    </mat-tab>
+                    <mat-tab label="گروه سوم">
+                        <app-group1></app-group1>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
-            <app-group1></app-group1>
-            <app-group1></app-group1>
         </div>
-    </div>
-    <!-- <div class="col-4 p-2">
+        <!-- <div class="col-4 p-2">
         <app-sample2-entry [formdata]="rowData"></app-sample2-entry>
     </div> -->
-</div>
+    </div>
+</form>
