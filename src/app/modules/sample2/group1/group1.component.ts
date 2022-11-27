@@ -22,7 +22,7 @@ export class Group1Component implements OnInit {
     { field: "Year1", headerName: "سال" },
     // { field: "Group", headerName: "گروه انتخابی" },
     { field: "GroupNew", headerName: "گروه انتخابی" },
-    // { field: "BeginDate", headerName: "تاریخ " },
+    { field: "BeginDate", headerName: "تاریخ " },
   ];
   rowsData: industryModel[] = [];
   constructor( public dialog: MatDialog,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, SimpleChanges, ViewChild } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import * as moment from "jalali-moment";
 import { Fruit } from "src/app/models/industry.model";
@@ -36,10 +36,10 @@ export class Sample2Component implements OnInit {
     this.formmaster=this.fb.group({
       id:['',Validators.required],
       name:new FormControl(''),
-      sal:new FormControl(''),
+      sal:new FormControl('',Validators.required),
       sal2:new FormControl(''),
       gn:new FormControl(''),
-      date1:new FormControl(''),
+      date1:new FormControl('',Validators.required),
     })
     this.loginTest();
 
@@ -53,6 +53,16 @@ export class Sample2Component implements OnInit {
   onsubmit()
   {
     
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    
+    if(changes["formmaster"] && changes["formdata"].currentValue){
+      console.log(changes["formmaster"] && changes["formdata"].currentValue);
+      
+      //this.refreshForm(changes["formdata"].currentValue as industryModel);
+    }
   }
 
  

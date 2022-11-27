@@ -32,6 +32,7 @@ export class ChipsComponent implements ControlValueAccessor, OnInit {
   @Input() require:boolean=false;
   arrayDynamic: Fruit["name"][] = [];
   constructor() {}
+  
   _onChange?: Function;
   _onTouch?: Function;
   // methods for updating formControl state for parent

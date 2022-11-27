@@ -6,7 +6,7 @@
      [formControl]="inputControl"
       [matAutocomplete]="auto"
       (focus)="onFocus()"
-      (input)="chnagevalue($event)" 
+      (input)="chnagevalue($event)"
       >
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"  (closed)="onTouch()" (optionSelected)="onChange($event)">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >

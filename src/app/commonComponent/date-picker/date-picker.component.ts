@@ -68,6 +68,8 @@ export class DatePickerComponent implements ControlValueAccessor, OnInit {
 
   onInput(event: MatDatepickerInputEvent<moment.Moment>) {
     console.log("OnInput: ", event.value);
+    if (!this._onChange) return;
+    this._onChange(event.value);
   }
 
   onChange(event: MatDatepickerInputEvent<moment.Moment>) {

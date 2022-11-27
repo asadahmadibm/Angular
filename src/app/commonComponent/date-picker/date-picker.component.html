@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" class="p-1">
     <mat-label>تاریخ شروع</mat-label>
-    <input matInput [min]="MinDate" [matDatepicker]="picker6"  [value]="inputControl" [formControl]="inputControl" placeholder="تاریخ شروع"
+    <input matInput [min]="MinDate" [matDatepicker]="picker6"  [formControl]="inputControl" placeholder="تاریخ شروع"
         (dateInput)="onInput($event)" (dateChange)="onChange($event)">
     <mat-datepicker-toggle matSuffix [for]="picker6" style="transform: translate(0px, 6px) !important;">
     </mat-datepicker-toggle>
