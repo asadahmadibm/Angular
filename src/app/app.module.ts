@@ -22,7 +22,6 @@ import { MenuComponent } from './commonComponent/menu/menu.component';
 import { Sample1Component } from './commonComponent/sample1/sample1.component';
 import { FishComponent } from './commonComponent/fish/fish.component';
 import { AuthInterceptorInterceptor } from './services/interceptor/authenticate.interceptor';
-import { LogoutComponent } from './commonComponent/Authenticate/logout/logout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccComponent } from './commonComponent/acc/acc.component';
 import {  AkbariDatePickerModule } from 'akbari-date-picker';
@@ -36,6 +35,8 @@ import { ChipsComponent } from './commonComponent/chips/chips.component';
 import { DatePickerComponent } from './commonComponent/date-picker/date-picker.component';
 import { Group1Component } from './modules/sample2/group1/group1.component';
 import { DropdownComponent } from './commonComponent/dropdown/dropdown.component';
+import { GridComponent } from './commonComponent/detail-form/grid/grid.component';
+import { DataEntryComponent } from './commonComponent/detail-form/data-entry/data-entry.component';
 
 
 @NgModule({
@@ -45,7 +46,6 @@ import { DropdownComponent } from './commonComponent/dropdown/dropdown.component
     MenuComponent,
     FishComponent,
     Sample1Component,
-    LogoutComponent,
     AccComponent,
     AutocompleteComponent,
     Sample2Component,
@@ -54,6 +54,9 @@ import { DropdownComponent } from './commonComponent/dropdown/dropdown.component
     DatePickerComponent,
     Group1Component,
     DropdownComponent,
+    GridComponent,
+    DataEntryComponent,
+
     
 
   ],

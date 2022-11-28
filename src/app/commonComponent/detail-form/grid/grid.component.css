@@ -1,0 +1,10 @@
+.headergrid {
+    background-color: #F7F7F7;
+    border: 1px solid #BABFC7!important;
+    border-bottom: transparent!important;
+}
+
+::ng-deep .mat-dialog-container {
+    padding: 0px !important;
+
+}
