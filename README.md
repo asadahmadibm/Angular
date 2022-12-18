@@ -5,10 +5,10 @@
     Install node.js https://nodejs.org/en/download/
     npm install -g @angular/cli
     if not work
-    	npm config set strict-ssl false
-	npm config set registry "http://registry.npmjs.org/"
-	npm --proxy http://username:password@cacheaddress.com.br:80 install packagename
-	Skip the username:password part if proxy doesn't require you to authenticate
+    		npm config set strict-ssl false
+		npm config set registry "http://registry.npmjs.org/"
+		npm --proxy http://username:password@cacheaddress.com.br:80 install packagename
+		Skip the username:password part if proxy doesn't require you to authenticate
     install Vscode
     extention for vscode
 	    Angular Essentials
