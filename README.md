@@ -76,6 +76,7 @@
 	npm i ngx-toastr --save
 	add to Angular.json  in styles -->  "./node_modules/ngx-toastr/toastr.css"
 	add to app.module.ts --> import { ToastrModule } from 'ngx-toastr'; And in imports --> ToastrModule.forRoot()
+	add to style.css  @import '../../node_modules/ngx-toastr/toastr.css';
 	example use 
 	import { ToastrService } from 'ngx-toastr';
 
